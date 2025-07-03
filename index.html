@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tei Zheng Portfolio</title>
+
+  <!-- SEO最適化 -->
+  <meta name="description" content="Tei Zhengのポートフォリオサイト。自己紹介、強み、作品集、想いを紹介します。">
+  <meta name="keywords" content="Tei Zheng, ポートフォリオ, デザイン, 建築, 自己紹介">
+
+  <!-- 字体加载优化 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: -1;
+    }
+
+    .content {
+      position: relative;
+      height: 100%;
+      max-width: 900px; /* ✅ 小屏限制内容宽度 */
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3em;
+      font-weight: bold;
+      margin-bottom: 0.3em;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+      letter-spacing: 0.05em;
+    }
+
+    .subtitle {
+      font-size: 1.3em;
+      margin-bottom: 2em;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .buttons a {
+      display: inline-block; /* ✅ 扩大点击区域 */
+      padding: 14px 28px;
+      border: 2px solid white;
+      border-radius: 6px;
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      min-width: 150px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .buttons a:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      transform: scale(1.05);
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .subtitle {
+        font-size: 1.1em;
+      }
+
+      .buttons a {
+        font-size: 0.95em;
+        padding: 12px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ✅ 可访问性 + 性能优化（poster） -->
+  <video autoplay loop muted playsinline class="video-background" aria-label="背景動画" title="背景動画" poster="bg_poster.jpg">
+    <source src="bg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>Welcome to Zheng's Portfolio</h1>
+    <p class="subtitle">考え、感じ、そして創る。</p>
+    <div class="buttons">
+      <a href="about.html">自己紹介 / About Me</a>
+      <a href="interests.html">強み / Strengths</a>
+      <a href="portfolio.html">作品集 / Portfolio</a>
+      <a href="omoi_section.html">想い / Thoughts</a>
+    </div>
+  </div>
+</body>
+</html>
