@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="no-js">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>写真ギャラリー</title>
+  <title>テイテンメイ 写真ギャラリー | 光と物語の作品集</title>
 
   <!-- SEO -->
   <meta name="description" content="テイテンメイの写真ギャラリー。日常の光と感情を捉えた作品たちを紹介します。">
   <meta name="keywords" content="テイテンメイ, 写真, 写真ギャラリー, 感性, 日常, ポートフォリオ">
+  <meta property="og:title" content="テイテンメイ 写真ギャラリー">
+  <meta property="og:description" content="日常の光と感情を捉えた写真作品集。">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="代表写真のURL">
 
   <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
@@ -31,6 +35,12 @@
       font-size: 2em;
       margin-bottom: 60px;
       letter-spacing: 2px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .photo-block {
@@ -58,6 +68,7 @@
       display: block;
       margin: 0 auto;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 100vw;
     }
 
     .photo-block img:hover {
@@ -72,6 +83,28 @@
       color: #ccc;
     }
 
+    .button-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .button-links a {
+      text-decoration: none;
+      color: #eee;
+      border: 1px solid #888;
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin: 0 10px;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .button-links a:hover,
+    .button-links a:focus {
+      background: rgba(255,255,255,0.08);
+      outline: 2px solid #aaa;
+    }
+
     @media (max-width: 600px) {
       .photo-block {
         max-width: 90%;
@@ -84,31 +117,49 @@
       .caption {
         font-size: 0.9rem;
       }
+
+      .button-links a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+      }
     }
   </style>
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+  </script>
 </head>
 <body>
 <main>
   <h1>写真ギャラリー</h1>
 
-  <div class="photo-block">
-    <img src="DSC02693.jpg" alt="逆光の中を歩く女性のシルエット" loading="lazy">
-    <p class="caption">一人の歩みと差し込む光、そこにあった物語。</p>
-  </div>
+  <section class="gallery">
+    <div class="photo-block">
+      <img src="DSC02693.jpg" alt="逆光の中を歩く女性のシルエット" loading="lazy">
+      <p class="caption">一人の歩みと差し込む光、そこにあった物語。</p>
+    </div>
 
-  <div class="photo-block">
-    <img src="DSC02605.jpg" alt="静かな図書館で本を読む少女" loading="lazy">
-    <p class="caption">2023年 秋、キャンパスの片隅で見つけた静かな一瞬。</p>
-  </div>
+    <div class="photo-block">
+      <img src="DSC02605.jpg" alt="静かな図書館で本を読む少女" loading="lazy">
+      <p class="caption">2023年 秋、キャンパスの片隅で見つけた静かな一瞬。</p>
+    </div>
 
-  <div class="photo-block">
-    <img src="photo3.jpg" alt="読書に没頭する若い男性の横顔" loading="lazy">
-    <p class="caption">赤い傘だけが、静かな雨の中でそっと語りかけてきた。</p>
-  </div>
+    <div class="photo-block">
+      <img src="photo3.jpg" alt="読書に没頭する若い男性の横顔" loading="lazy">
+      <p class="caption">赤い傘だけが、静かな雨の中でそっと語りかけてきた。</p>
+    </div>
 
-  <div class="photo-block">
-    <img src="photo4.jpg" alt="秋の街路樹と影を歩く女性の後ろ姿" loading="lazy">
-    <p class="caption">2024年冬、静岡の道で見つけた、小さな奇跡。</p>
+    <div class="photo-block">
+      <img src="photo4.jpg" alt="秋の街路樹と影を歩く女性の後ろ姿" loading="lazy">
+      <p class="caption">2024年冬、静岡の道で見つけた、小さな奇跡。</p>
+    </div>
+  </section>
+
+  <!-- 返回按钮 -->
+  <div class="button-links">
+    <a href="javascript:history.back()" aria-label="前のページに戻る">← 戻る</a>
+    <a href="index.html" aria-label="ホームページへ戻る">ホームへ</a>
   </div>
 </main>
 
@@ -120,9 +171,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.2
-  });
+  }, { threshold: 0.2 });
 
   document.querySelectorAll('.photo-block').forEach(block => {
     observer.observe(block);
