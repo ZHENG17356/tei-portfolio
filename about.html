@@ -96,6 +96,29 @@
       margin-top: 20px;
     }
 
+    .back-button-container {
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1.5px solid #ccc;
+      border-radius: 30px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #fff;
+      color: #111;
+      border-color: #fff;
+    }
+
     @media screen and (max-width: 768px) {
       .row, .row.reverse {
         flex-direction: column;
@@ -106,6 +129,7 @@
     }
   </style>
 </head>
+
 <body>
   <main>
     <div class="container">
@@ -173,6 +197,12 @@
           <p>本プロジェクトでは、企画立案から準備・当日の運営に至るまで、学生チームの一員として積極的に携わりました。チームでの協働を通して、実践的な経験と大きな達成感を得ることができました。</p>
         </div>
       </div>
+
+      <!-- 👇 返回按钮放这里 -->
+      <div class="back-button-container" data-aos="fade-up">
+        <a href="index.html" class="back-button">← ホームに戻る</a>
+      </div>
+
     </div>
   </main>
 

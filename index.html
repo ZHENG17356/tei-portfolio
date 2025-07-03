@@ -12,7 +12,7 @@
   <!-- 字体加载优化 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -23,7 +23,7 @@
 
     body, html {
       height: 100%;
-      font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+      font-family: 'Noto Sans JP', 'Poppins', sans-serif;
       color: white;
       overflow: hidden;
     }
@@ -51,7 +51,7 @@
     .content {
       position: relative;
       height: 100%;
-      max-width: 900px; /* ✅ 小屏限制内容宽度 */
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -59,21 +59,34 @@
       align-items: center;
       text-align: center;
       padding: 20px;
+
+      /* ⬇ 页面淡入动画 */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0.2s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
     }
 
     h1 {
+      font-family: 'Poppins', sans-serif;
       font-size: 3em;
-      font-weight: bold;
+      font-weight: 600;
+      letter-spacing: 0.05em;
       margin-bottom: 0.3em;
       text-shadow: 0 0 10px rgba(0,0,0,0.5);
-      letter-spacing: 0.05em;
     }
 
     .subtitle {
       font-size: 1.3em;
       margin-bottom: 2em;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.92);
     }
 
     .buttons {
@@ -81,25 +94,26 @@
       gap: 16px;
       flex-wrap: wrap;
       justify-content: center;
+      width: 100%;
     }
 
     .buttons a {
-      display: inline-block; /* ✅ 扩大点击区域 */
-      padding: 14px 28px;
-      border: 2px solid white;
-      border-radius: 6px;
-      color: white;
+      display: inline-block;
+      padding: 13px 26px;
+      border: 1.5px solid white;
+      border-radius: 12px;
+      color: #f5f5f5;
       text-decoration: none;
       font-size: 1em;
       transition: all 0.3s ease;
       min-width: 150px;
       text-align: center;
-      cursor: pointer;
     }
 
     .buttons a:hover {
-      background-color: rgba(255, 255, 255, 0.15);
-      transform: scale(1.05);
+      background-color: rgba(255, 255, 255, 0.12);
+      transform: scale(1.04);
+      box-shadow: 0 4px 24px rgba(255, 255, 255, 0.08);
     }
 
     @media screen and (max-width: 600px) {
@@ -112,14 +126,16 @@
       }
 
       .buttons a {
+        width: 100%;
         font-size: 0.95em;
         padding: 12px 20px;
       }
     }
   </style>
 </head>
+
 <body>
-  <!-- ✅ 可访问性 + 性能优化（poster） -->
+  <!-- 背景動画 -->
   <video autoplay loop muted playsinline class="video-background" aria-label="背景動画" title="背景動画" poster="bg_poster.jpg">
     <source src="bg.mp4" type="video/mp4">
     Your browser does not support the video tag.
