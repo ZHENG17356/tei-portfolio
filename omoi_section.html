@@ -112,6 +112,27 @@
       50% { transform: translateY(-10px); }
     }
 
+    /* 下箭头指示器 */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      color: rgba(255, 255, 255, 0.1);
+      animation: bounce 2s infinite;
+      z-index: 3;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
     /* 按钮样式 */
     .button-group {
       margin-top: 2rem;
@@ -181,6 +202,7 @@
       <p>「この瞬間を残したい」という気持ちだけは、</p>
       <p>今でも胸の中にある。</p>
     </div>
+    <div class="scroll-indicator"><span>&#x25BC;</span></div>
   </section>
 
   <!-- Section 2 -->
