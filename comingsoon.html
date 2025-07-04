@@ -7,13 +7,14 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
+      padding-top: 10vh;
+      padding-bottom: 10vh;
       font-family: 'Noto Sans JP', sans-serif;
       background: linear-gradient(-45deg, #1a1a1a, #222222, #2a2a2a, #1a1a1a);
       background-size: 400% 400%;
       animation: gradientBG 10s ease infinite;
       color: #f0f0f0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -42,25 +43,12 @@
       margin: 20px 0 10px;
     }
 
-    .typing {
+    .message {
       font-size: 1.2em;
       color: #aaa;
-      max-width: 600px;
+      max-width: 90vw;
       line-height: 1.6;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #fff;
-      animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-
-    @keyframes blink {
-      from, to { border-color: transparent }
-      50% { border-color: #fff }
+      padding: 0 20px;
     }
 
     .buttons {
@@ -74,10 +62,11 @@
     .buttons a {
       color: #eee;
       border: 1px solid #888;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 30px;
       text-decoration: none;
       transition: 0.3s ease;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
     }
 
     .buttons a:hover,
@@ -88,22 +77,21 @@
 
     @media (max-width: 600px) {
       h1 { font-size: 1.8em; }
-      .typing { font-size: 1em; padding: 0 20px; }
+      .message { font-size: 1em; }
       .buttons {
         flex-direction: column;
-        gap: 12px;
+        gap: 14px;
       }
-
       .buttons a {
-        width: 80%;
+        width: 90%;
       }
     }
   </style>
 </head>
 <body>
-  <div class="emoji">🚧</div>
+  <div class="emoji" aria-label="工事中アイコン">🚧</div>
   <h1>WORK IN PROGRESS</h1>
-  <p class="typing">このページは現在準備中です。公開までしばらくお待ちください。</p>
+  <p class="message">このページは現在準備中です。公開までしばらくお待ちください。</p>
 
   <div class="buttons">
     <a href="index.html">🔙 ホームへ戻る</a>
