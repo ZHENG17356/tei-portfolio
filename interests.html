@@ -5,11 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>私の強み</title>
 
-  <!-- ✅ SEO 优化 -->
   <meta name="description" content="テイテンメイの強み・スキル紹介ページ。写真撮影、デザインツール、デッサンなど。">
   <meta name="keywords" content="テイテンメイ, 強み, 写真, デザイン, デッサン, ポートフォリオ">
 
-  <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
   <style>
@@ -24,7 +22,7 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 60px 20px 100px;
       text-align: center;
     }
 
@@ -43,19 +41,30 @@
     .card {
       position: relative;
       width: 300px;
-      min-height: 230px; /* ✅ 支持内容不同高度 */
+      min-height: 230px;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: inherit;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      transform: scale(1.03);
+      box-shadow: 0 0 22px rgba(255, 255, 255, 0.2);
+    }
+
+    .card:active {
+      transform: scale(0.97);
     }
 
     .card img {
@@ -64,6 +73,7 @@
       object-fit: cover;
       display: block;
       transition: opacity 0.3s ease;
+      border-radius: 12px;
     }
 
     .card:hover img {
@@ -90,12 +100,12 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) translateY(5px);
       font-size: 1em;
       font-weight: 500;
       color: #ffffff;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.4s ease, transform 0.4s ease;
       white-space: pre-line;
       pointer-events: none;
       text-align: center;
@@ -103,17 +113,58 @@
 
     .card:hover .hover-text {
       opacity: 1;
+      transform: translate(-50%, -50%) translateY(0);
+    }
+
+    .bottom-buttons {
+      margin-top: 80px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s ease 0.4s;
+    }
+
+    .bottom-buttons.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .bottom-buttons a {
+      text-decoration: none;
+      color: #eee;
+      border: 1px solid #888;
+      padding: 12px 24px;
+      border-radius: 30px;
+      margin: 0 10px;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .bottom-buttons a:hover,
+    .bottom-buttons a:focus {
+      background: rgba(255, 255, 255, 0.08);
+      outline: 2px solid #aaa;
     }
 
     @media (max-width: 768px) {
       .strengths {
         flex-direction: column;
         align-items: center;
+        gap: 24px;
       }
 
       .card {
         width: 90%;
-        margin-bottom: 24px;
+        margin-bottom: 12px;
+      }
+
+      .card img {
+        border-radius: 12px;
+      }
+
+      .bottom-buttons a {
+        display: block;
+        width: 80%;
+        margin: 12px auto;
       }
     }
   </style>
@@ -123,26 +174,45 @@
     <h1>私の強み</h1>
     <div class="strengths">
 
-      <!-- ✅ 图片 alt / aria / lazy 加入 -->
-      <a href="photography_gallery.html" class="card" aria-label="写真撮影ギャラリーへ" tabindex="0">
+      <a href="photography_gallery.html" class="card">
         <img src="photography_sample.jpg" alt="写真撮影の作品サンプル" loading="lazy" />
         <div class="hover-text">光が語る物語を、レンズで切り取る。</div>
         <div class="label">写真撮影</div>
       </a>
 
-      <a href="design_tools.html" class="card" aria-label="デザインツールスキル詳細ページへ" tabindex="0">
+      <a href="comingsoon.html" class="card">
         <img src="design_tool_image_sample.jpg" alt="IllustratorやPhotoshopのスキル" loading="lazy" />
         <div class="hover-text">直感を、ツールでカタチにする。</div>
         <div class="label">デザインツールスキル</div>
       </a>
 
-      <a href="dessin_gallery.html" class="card" aria-label="デッサンの作品紹介ページへ" tabindex="0">
+      <a href="comingsoon.html" class="card">
         <img src="dessin_sample.jpg" alt="デッサンのスケッチサンプル" loading="lazy" />
         <div class="hover-text">線一本に、観察力と感性を込めて。</div>
         <div class="label">デッサン</div>
       </a>
 
     </div>
+
+    <!-- 返回按钮 -->
+    <div class="bottom-buttons">
+      <a href="index.html">ホームへ戻る</a>
+    </div>
   </div>
+
+  <script>
+    // Intersection Observer 用于渐显动画
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.card').forEach(el => observer.observe(el));
+    observer.observe(document.querySelector('.bottom-buttons'));
+  </script>
 </body>
 </html>

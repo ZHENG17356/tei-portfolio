@@ -59,8 +59,6 @@
       align-items: center;
       text-align: center;
       padding: 20px;
-
-      /* ⬇ 页面淡入动画 */
       opacity: 0;
       transform: translateY(30px);
       animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0.2s forwards;
@@ -116,6 +114,40 @@
       box-shadow: 0 4px 24px rgba(255, 255, 255, 0.08);
     }
 
+    /* -------- 意見・不具合ボタン -------- */
+    .feedback-button {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: #444;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-size: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.8s ease;
+      z-index: 9999;
+      opacity: 0;
+      animation: fadeInBtn 1.8s ease 1.2s forwards;
+    }
+
+    .feedback-button:hover {
+      background-color: #666;
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeInBtn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     @media screen and (max-width: 600px) {
       h1 {
         font-size: 2em;
@@ -129,6 +161,13 @@
         width: 100%;
         font-size: 0.95em;
         padding: 12px 20px;
+      }
+
+      .feedback-button {
+        bottom: 16px;
+        right: 16px;
+        font-size: 13px;
+        padding: 10px 14px;
       }
     }
   </style>
@@ -153,5 +192,12 @@
       <a href="omoi_section.html">想い / Thoughts</a>
     </div>
   </div>
+
+  <!-- 不具合・意見ボタン -->
+  <a href="mailto:zhengtian0308@gmail.com?subject=ポートフォリオの不具合・ご意見について" 
+     class="feedback-button" 
+     title="不具合や意見を送る">
+     ご意見・不具合報告
+  </a>
 </body>
 </html>

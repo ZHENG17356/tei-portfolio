@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🚧 WORK IN PROGRESS 🚧</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: linear-gradient(-45deg, #1a1a1a, #222222, #2a2a2a, #1a1a1a);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      color: #f0f0f0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .emoji {
+      font-size: 3.5em;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin: 20px 0 10px;
+    }
+
+    .typing {
+      font-size: 1.2em;
+      color: #aaa;
+      max-width: 600px;
+      line-height: 1.6;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #fff }
+    }
+
+    .buttons {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .buttons a {
+      color: #eee;
+      border: 1px solid #888;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .buttons a:hover,
+    .buttons a:focus {
+      background: rgba(255, 255, 255, 0.08);
+      outline: 2px solid #aaa;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8em; }
+      .typing { font-size: 1em; padding: 0 20px; }
+      .buttons {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .buttons a {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="emoji">🚧</div>
+  <h1>WORK IN PROGRESS</h1>
+  <p class="typing">このページは現在準備中です。公開までしばらくお待ちください。</p>
+
+  <div class="buttons">
+    <a href="index.html">🔙 ホームへ戻る</a>
+    <a href="mailto:zhengtian0308@gmail.com?subject=ポートフォリオへのご意見">💬 意見を送る</a>
+  </div>
+</body>
+</html>
