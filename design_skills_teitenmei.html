@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Design Skills | テイテンメイ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: #121212;
+      color: #f0f0f0;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 2.2em;
+      letter-spacing: 1px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: auto;
+      padding-bottom: 40px;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.23,1.01,.32,1), transform 0.7s cubic-bezier(.23,1.01,.32,1);
+    }
+
+    .skill-card.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    .skill-card:hover,
+    .skill-card:focus-within {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(255,255,255,0.13);
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .skill-card h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+      color: #ffffff;
+    }
+
+    .skill-card p {
+      font-size: 0.95em;
+      color: #cccccc;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 18px 4vw;
+      }
+      h1 {
+        font-size: 1.3em;
+        margin-bottom: 28px;
+      }
+      .skills-grid {
+        gap: 14px;
+      }
+      .skill-card {
+        padding: 14px;
+        border-radius: 10px;
+      }
+      .skill-card h3 {
+        font-size: 1em;
+      }
+      .skill-card p {
+        font-size: 0.92em;
+      }
+    }
+
+    /* ⬅️ 返回按钮样式 */
+    .back-links {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .back-links a {
+      display: inline-block;
+      margin: 10px 12px;
+      padding: 10px 20px;
+      border: 1px solid #888;
+      border-radius: 16px;
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
+    }
+
+    .back-links a:hover {
+      color: #fff;
+      border-color: #fff;
+      background-color: rgba(255,255,255,0.05);
+    }
+  </style>
+</head>
+<body>
+  <h1>Design Tools Skills</h1>
+  <div class="skills-grid">
+    <div class="skill-card"><h3>Photoshop</h3><p>写真加工、色調整、バナー制作。熟練レベル。</p></div>
+    <div class="skill-card"><h3>Illustrator</h3><p>ロゴ制作、図面設計。基本操作可。使用歴2年。</p></div>
+    <div class="skill-card"><h3>Premiere Pro</h3><p>映像編集、プレゼン動画の簡易作成。基本的な操作可能。</p></div>
+    <div class="skill-card"><h3>Vectorworks</h3><p>建築図面、レイアウト設計。熟練使用。実務課題で活用中。</p></div>
+    <div class="skill-card"><h3>Twinmotion</h3><p>空間のリアルタイムレンダリング。高精度な可視化が可能。</p></div>
+    <div class="skill-card"><h3>AutoCAD</h3><p>建築製図、2Dレイアウト作成。基本図面操作対応。</p></div>
+    <div class="skill-card"><h3>VSCode</h3><p>HTML / CSS / JS によるWeb開発。自身のサイトにて実践。</p></div>
+    <div class="skill-card"><h3>前端デザイン</h3><p>構成設計、配色、UI/UX。ユーザー視点を重視した設計。</p></div>
+    <div class="skill-card"><h3>Microsoft Word</h3><p>プレゼン資料や報告書の整備に使用。図表や文章構成を意識した文書作成。</p></div>
+  </div>
+
+  <!-- ⬅️ 返回按钮 -->
+  <div class="back-links">
+    <a href="javascript:history.back()">← 戻る</a>
+    <a href="index.html">ホームへ</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.skill-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('visible'), 120 + i * 100);
+      });
+    });
+  </script>
+</body>
+</html>

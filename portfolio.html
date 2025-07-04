@@ -9,36 +9,7 @@
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
-      margin: 0;      @media (max-width: 600px) {
-        body {
-          padding: 10px 2px;
-        }
-        .container {
-          padding: 0;
-        }
-        a.card {
-          margin-bottom: 32px;
-          border-radius: 10px;
-        }
-        .card-content {
-          padding: 14px 10px;
-        }
-        .card img {
-          border-radius: 10px 10px 0 0;
-        }
-        h1 {
-          font-size: 22px;
-          margin-bottom: 24px;
-        }
-        .card h2 {
-          font-size: 15px;
-          margin-bottom: 8px;
-        }
-        .card p {
-          font-size: 13px;
-          line-height: 1.5;
-        }
-      }
+      margin: 0;
       padding: 40px 20px;
       background-color: #111;
       color: #f0f0f0;
@@ -79,6 +50,7 @@
       height: auto;
       display: block;
       transition: transform 0.3s ease;
+      border-radius: 16px 16px 0 0;
     }
 
     a.card:hover img {
@@ -101,15 +73,63 @@
       line-height: 1.7;
     }
 
+    .back-button-wrapper {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .back-button {
+      display: inline-block;
+      padding: 10px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      color: #fff;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      background-color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: #fff;
+      color: #fff;
+    }
+
     @media (max-width: 600px) {
-      h1 {
-        font-size: 28px;
+      body {
+        padding: 10px 2px;
       }
-      .card h2 {
-        font-size: 18px;
+      .container {
+        padding: 0;
+      }
+      a.card {
+        margin-bottom: 32px;
+        border-radius: 10px;
       }
       .card-content {
-        padding: 20px;
+        padding: 14px 10px;
+      }
+      .card img {
+        border-radius: 10px 10px 0 0;
+      }
+      h1 {
+        font-size: 22px;
+        margin-bottom: 24px;
+      }
+      .card h2 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      .card p {
+        font-size: 13px;
+        line-height: 1.5;
+      }
+      .back-button {
+        font-size: 0.9rem;
+        padding: 8px 22px;
+        border-radius: 12px;
       }
     }
   </style>
@@ -133,7 +153,7 @@
       <img src="imagesproject3.webp" alt="The Coffee Gallery">
       <div class="card-content">
         <h2>Experience Studio</h2>
-        <p>“「誰でも気軽に立ち寄れる、開かれたクルマの体験空間」をテーマに設計。</p>
+        <p>「誰でも気軽に立ち寄れる、開かれたクルマの体験空間」をテーマに設計。</p>
       </div>
     </a>
 
@@ -145,6 +165,11 @@
         <p>五感を活かすゾーニング課題。音・香り・光などを設計に取り入れ、感覚的にリラックスできる空間を提案。</p>
       </div>
     </a>
+
+    <!-- 🔙 返回按钮 -->
+    <div class="back-button-wrapper">
+      <a href="index.html" class="back-button">ホームへ戻る</a>
+    </div>
 
   </div>
 </body>
