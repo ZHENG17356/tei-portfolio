@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Design Skills | テイテンメイ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Montserrat:wght@600&display=swap" rel="stylesheet">
-  <style>
+    <style>
     body {
       margin: 0;
       padding: 40px;
@@ -40,6 +40,7 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s cubic-bezier(.23,1.01,.32,1), transform 0.7s cubic-bezier(.23,1.01,.32,1);
+      cursor: pointer;
     }
 
     .skill-card.visible {
@@ -89,7 +90,6 @@
       }
     }
 
-    /* ⬅️ 返回按钮样式 */
     .back-links {
       text-align: center;
       margin-top: 60px;
@@ -112,26 +112,91 @@
       border-color: #fff;
       background-color: rgba(255,255,255,0.05);
     }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .modal-content {
+      background: #222;
+      color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 720px;
+      width: 90%;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      position: relative;
+      animation: scaleIn 0.3s ease;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px; right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5em;
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    /* ✅ 已优化的图片样式，限制大小 */
+    .modal img {
+      max-width: 100%;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   </style>
+
 </head>
 <body>
   <h1>Design Tools Skills</h1>
   <div class="skills-grid">
-    <div class="skill-card"><h3>Photoshop</h3><p>写真加工、色調整、バナー制作。熟練レベル。</p></div>
-    <div class="skill-card"><h3>Illustrator</h3><p>ロゴ制作、図面設計。基本操作可。使用歴2年。</p></div>
-    <div class="skill-card"><h3>Premiere Pro</h3><p>映像編集、プレゼン動画の簡易作成。基本的な操作可能。</p></div>
-    <div class="skill-card"><h3>Vectorworks</h3><p>建築図面、レイアウト設計。熟練使用。実務課題で活用中。</p></div>
-    <div class="skill-card"><h3>Twinmotion</h3><p>空間のリアルタイムレンダリング。高精度な可視化が可能。</p></div>
-    <div class="skill-card"><h3>AutoCAD</h3><p>建築製図、2Dレイアウト作成。基本図面操作対応。</p></div>
-    <div class="skill-card"><h3>VSCode</h3><p>HTML / CSS / JS によるWeb開発。自身のサイトにて実践。</p></div>
-    <div class="skill-card"><h3>前端デザイン</h3><p>構成設計、配色、UI/UX。ユーザー視点を重視した設計。</p></div>
-    <div class="skill-card"><h3>Microsoft Word</h3><p>プレゼン資料や報告書の整備に使用。図表や文章構成を意識した文書作成。</p></div>
+    <div class="skill-card"><h3>Photoshop</h3><p>写真の加工、色味の調整、バナー制作。熟練レベル。</p></div>
+    <div class="skill-card"><h3>Illustrator</h3><p>ロゴ制作、資料のレイアウトデザイン。基本操作が可能。使用歴2年</p></div>
+    <div class="skill-card"><h3>Premiere Pro</h3><p>映像編集、プレゼン動画の簡易作成。基本操作に対応。</p></div>
+    <div class="skill-card"><h3>Vectorworks</h3><p>建築図面・レイアウト設計に使用。実務課題にて活用中の熟練者。</p></div>
+    <div class="skill-card"><h3>Twinmotion</h3><p>空間のリアルタイムレンダリング。高精度なビジュアライズが可能。</p></div>
+    <div class="skill-card"><h3>AutoCAD</h3><p>建築製図や2Dレイアウトの作成に対応。基本操作を習得。</p></div>
+    <div class="skill-card"><h3>VSCode</h3><p>HTML / CSS / JavaScript による Web 開発。自身のサイトにて実践中。</p></div>
+    <div class="skill-card"><h3>フロントエンドデザイン</h3><p>構成設計、配色、UI/UX設計。ユーザー視点を重視した提案が可能。</p></div>
+    <div class="skill-card"><h3>AI活用</h3><p>画像生成やアイデアスケッチ、ライティング補助などに活用。発想支援や業務効率化のために日常的に使用。</p></div>
   </div>
 
-  <!-- ⬅️ 返回按钮 -->
   <div class="back-links">
     <a href="javascript:history.back()">← 戻る</a>
     <a href="index.html">ホームへ</a>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal">✕</button>
+      <h2 id="modal-title"></h2>
+      <img id="modal-image" src="" alt="">
+      <p id="modal-text"></p>
+    </div>
   </div>
 
   <script>
@@ -139,6 +204,68 @@
       document.querySelectorAll('.skill-card').forEach((card, i) => {
         setTimeout(() => card.classList.add('visible'), 120 + i * 100);
       });
+    });
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalText = document.getElementById('modal-text');
+    const modalImage = document.getElementById('modal-image');
+    const closeModal = document.getElementById('closeModal');
+
+    const skillDetails = {
+      "Photoshop": {
+        text: "発表用として制作したビジュアルページ。模型写真をPhotoshopで色調補正と構図調整を行い、「空を映す静けさ」を表現。手書き風のタイトルフォントと明快なレイアウトで、発表資料として使用しました。",
+        image: "imagesproject1.webp"
+      },
+      "Illustrator": {
+        text: "学校課題として制作したビジュアルポスター。文化展示会をテーマに、Illustratorで抽象図形とビビッドな配色を組み合わせ、視覚的インパクトのある構成に仕上げました。",
+        image: "imagesillustrator.webp"
+      },
+      "Premiere Pro": {
+        text: "映像編集やテロップ、効果音の挿入までカバー可能。",
+        image: "images/premiere.webp"
+      },
+      "Vectorworks": {
+        text: "建築系の設計に対応。コンペや課題でも使用中。",
+        image: "images/vectorworks.webp"
+      },
+      "Twinmotion": {
+        text: "実際の設計課題をもとに制作したオフィス空間のリアルタイムレンダリング。時間帯ごとの光の変化や動線を視覚的に確認できるよう工夫しました。",
+        image: "imagestwinmotion.webp"
+      },
+      "AutoCAD": {
+        text: "2D図面の作成に特化。建築基準を踏まえた作図が可能。",
+        image: "images/autocad.webp"
+      },
+      "VSCode": {
+        text: "自身のWebサイトを通してHTML/CSSの実装経験あり。",
+        image: "images/vscode.webp"
+      },
+      "フロントエンドデザイン": {
+        text: "UIやUXを意識したレイアウト・配色提案が可能。",
+        image: "images/frontend.webp"
+      },
+      "AI活用": {
+        text: "MidjourneyやChatGPT等を活用し、発想補助や効率化に役立つ。",
+        image: "images/ai.webp"
+      }
+    };
+
+    document.querySelectorAll('.skill-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.querySelector('h3').innerText;
+        const detail = skillDetails[title];
+        if (detail) {
+          modalTitle.textContent = title;
+          modalText.textContent = detail.text;
+          modalImage.src = detail.image;
+          modal.style.display = 'flex';
+        }
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.style.display = 'none';
     });
   </script>
 </body>
