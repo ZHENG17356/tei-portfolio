@@ -83,6 +83,17 @@
       will-change: opacity, transform;
     }
 
+    .text-content p {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .text-content.visible p {
+      opacity: 1;
+      transform: none;
+    }
+
     .visible .text-content {
       opacity: 1;
       transform: translateY(0);
@@ -112,7 +123,6 @@
       50% { transform: translateY(-10px); }
     }
 
-    /* 下箭头指示器 */
     .scroll-indicator {
       position: absolute;
       bottom: 20px;
@@ -133,7 +143,6 @@
       }
     }
 
-    /* 按钮样式 */
     .button-group {
       margin-top: 2rem;
       display: flex;
@@ -145,23 +154,23 @@
     }
 
     .btn {
-      background-color: transparent;
+      background: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%);
       color: #000;
-      border: 2px solid #000;
+      border: none;
       padding: 0.6rem 1.4rem;
-      text-decoration: none;
       font-size: 1rem;
       border-radius: 30px;
-      transition: all 0.3s ease;
+      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+      transition: all 0.3s ease, box-shadow 0.5s ease;
+      text-decoration: none;
     }
 
     .btn:hover {
-      background-color: #000;
+      background: linear-gradient(to right, #111 0%, #333 100%);
       color: #fff;
-      border-color: #000;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
-    /* ✅ 移动端优化 */
     @media (max-width: 600px) {
       .text-content {
         font-size: 1.2rem;
@@ -183,7 +192,6 @@
 </head>
 <body>
 
-  <!-- JS 可用性处理 -->
   <script>
     document.documentElement.classList.remove('no-js');
   </script>
@@ -237,12 +245,23 @@
     </div>
   </section>
 
-  <!-- JS: 渐显效果 -->
+  <!-- JavaScript for scroll animation -->
   <script>
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
+          const section = entry.target;
+          const textContent = section.querySelector('.text-content');
+          if (textContent) {
+            textContent.classList.add("visible");
+
+            const paragraphs = textContent.querySelectorAll('p');
+            paragraphs.forEach((p, i) => {
+              p.style.transitionDelay = `${i * 150}ms`;
+              p.classList.add('visible');
+            });
+          }
+          section.classList.add("visible");
         }
       });
     }, { threshold: 0.3 });
