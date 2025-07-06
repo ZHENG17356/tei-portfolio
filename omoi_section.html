@@ -379,6 +379,132 @@
     }
   });
 </script>
+<!-- 👇 加在你「想い」页面底部的按钮和隐藏彩蛋 -->
+<div style="background-color: white; padding: 40px 0; text-align: center;">
+  <div id="secret-button-container">
+    <button id="secret-button">5回押したら何かが起こるかも？</button>
+  </div>
+</div>
 
+<!-- 👇 彩蛋区域 -->
+<div id="easter-egg" class="hidden">
+  <div class="message">
+    <p style="font-size: 2em; font-weight: bold; margin-bottom: 24px;">
+      最後まで見てくれて、本当にありがとう！
+    </p>
+    <p style="font-size: 1.2em; line-height: 1.8;">
+      一方的に「見せる」じゃなくて、<br>
+      「誰かと感じ合う」ために作ったサイトです。<br>
+      …だから、君がここまで来てくれて、嬉しいです。
+    </p>
+  </div>
+  <div class="emojis" id="emoji-container"></div>
+</div>
+
+<style>
+  #secret-button {
+    background-color: transparent;
+    color: #777;
+    border: 1px dashed #bbb;
+    padding: 8px 18px;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+  }
+
+  #secret-button:hover {
+    background-color: #f2f2f2;
+    color: #444;
+  }
+
+  #easter-egg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #222 0%, #000 100%);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+  }
+
+  #easter-egg.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .message {
+    color: #fff;
+    font-size: 1.2em;
+    text-align: center;
+    z-index: 2;
+    padding: 0 20px;
+  }
+
+  .emojis span {
+    position: absolute;
+    font-size: 2em;
+    animation: floatUp 3s linear forwards;
+    user-select: none;
+    pointer-events: none;
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-120vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
+
+<script>
+  let clickCount = 0;
+  const button = document.getElementById('secret-button');
+  const egg = document.getElementById('easter-egg');
+  const emojiContainer = document.getElementById('emoji-container');
+  const emojis = ["🌸", "✨", "🎈", "🎉", "💫", "🌟", "💖"];
+
+  function launchEmojis(count = 100) {
+    for (let i = 0; i < count; i++) {
+      const emoji = document.createElement("span");
+      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      emoji.style.left = Math.random() * 100 + "vw";
+      emoji.style.top = Math.random() * 100 + "vh";
+      emoji.style.animationDuration = 2 + Math.random() * 2 + "s";
+      emojiContainer.appendChild(emoji);
+      setTimeout(() => emoji.remove(), 4000);
+    }
+  }
+
+  button.addEventListener('click', () => {
+    clickCount++;
+    if (clickCount === 5) {
+      egg.classList.add('active');
+      launchEmojis();
+    }
+  });
+
+  egg.addEventListener('click', () => {
+    egg.classList.remove('active');
+    emojiContainer.innerHTML = "";
+    clickCount = 0;
+  });
+</script>
 </body>
 </html>
