@@ -258,6 +258,70 @@
       from { transform: translateY(30px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
     }
+        .easter-egg-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background: rgba(240, 240, 240, 0.599);
+      border-radius: 50%;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      cursor: pointer;
+      user-select: none;
+      transition: opacity 0.3s, box-shadow 0.3s;
+    }
+    .easter-egg-btn:hover {
+      opacity: 1;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+    }
+    .easter-egg-btn span {
+      font-size: 1.3em;
+      color: #888;
+      font-weight: bold;
+      pointer-events: none;
+    }
+    .egg-tooltip {
+      display: none;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 48px;
+      background: #222;
+      color: #fff;
+      font-size: 0.78em;
+      padding: 2px 8px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 10011;
+    }
+    .easter-egg-btn:hover .egg-tooltip {
+      display: block;
+    }
+        .easter-egg-flowers {
+      position: fixed;
+      pointer-events: none;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 10021;
+    }
+    .easter-egg-flower {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.85;
+      animation: fall 5s linear forwards;
+    }
+       @keyframes fall {
+  0% {
+    transform: translateY(-40px) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translateY(150vh) rotate(360deg) scale(0.7);
+    opacity: 1;
+  }
+}
   </style>
 </head>
 
@@ -310,6 +374,11 @@
     <a href="index.html" class="btn">ホームに戻る</a>
     <a href="https://www.instagram.com/tianming4854" class="btn" target="_blank">Instagramをフォロー</a>
   </div>
+  <!-- 这里插入问号按钮 -->
+  <div id="easterEggBtn" class="easter-egg-btn" title="長押しでサプライズ" style="margin:2.5rem auto 0; opacity:0.7;">
+    <span>?</span>
+    <div class="egg-tooltip" style="position:absolute; left:50%; transform:translateX(-50%); bottom:48px;">長押しでサプライズ</div>
+     </div>
 </section>
 
 <!-- お問い合わせモーダル -->
@@ -378,133 +447,71 @@
       modal.classList.remove("active");
     }
   });
-</script>
-<!-- 👇 加在你「想い」页面底部的按钮和隐藏彩蛋 -->
-<div style="background-color: white; padding: 40px 0; text-align: center;">
-  <div id="secret-button-container">
-    <button id="secret-button">5回押したら何かが起こるかも？</button>
-  </div>
-</div>
-
-<!-- 👇 彩蛋区域 -->
-<div id="easter-egg" class="hidden">
-  <div class="message">
-    <p style="font-size: 2em; font-weight: bold; margin-bottom: 24px;">
-      最後まで見てくれて、本当にありがとう！
-    </p>
-    <p style="font-size: 1.2em; line-height: 1.8;">
-      一方的に「見せる」じゃなくて、<br>
-      「誰かと感じ合う」ために作ったサイトです。<br>
-      …だから、君がここまで来てくれて、嬉しいです。
-    </p>
-  </div>
-  <div class="emojis" id="emoji-container"></div>
-</div>
-
-<style>
-  #secret-button {
-    background-color: transparent;
-    color: #777;
-    border: 1px dashed #bbb;
-    padding: 8px 18px;
-    font-size: 0.9em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    const eggBtn = document.getElementById('easterEggBtn');
+  let eggTimer = null;
+  
+  // 彩蛋弹窗（你可以自定义内容和样式）
+  const eggModal = document.createElement('div');
+  eggModal.className = 'easter-egg-modal';
+  eggModal.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.92);z-index:10020;opacity:0;pointer-events:none;transition:opacity 0.5s;';
+    eggModal.innerHTML = `
+    <div class="easter-egg-flowers"></div>
+    <div style="background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.13);padding:2.2em 2em 1.5em 2em;text-align:center;min-width:240px;max-width:90vw;">
+      <div style="font-size:2.2em;">🌸</div>
+      <div style="margin:1em 0 0.5em 0;">ここまで読んでくれて、ありがとう！</div>
+      <div style="font-size:1em;opacity:0.7;">あなたの日常にも、やさしい光が降り注ぎますように。</div>
+      <button id="closeEgg" class="btn" style="margin-top:2em;">閉じる</button>
+    </div>
+  `;
+  document.body.appendChild(eggModal);
+  
+    function showEggModal() {
+    eggModal.style.opacity = '1';
+    eggModal.style.pointerEvents = 'auto';
+    launchFlowers();
   }
-
-  #secret-button:hover {
-    background-color: #f2f2f2;
-    color: #444;
-  }
-
-  #easter-egg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, #222 0%, #000 100%);
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.8s ease;
-  }
-
-  #easter-egg.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .message {
-    color: #fff;
-    font-size: 1.2em;
-    text-align: center;
-    z-index: 2;
-    padding: 0 20px;
-  }
-
-  .emojis span {
-    position: absolute;
-    font-size: 2em;
-    animation: floatUp 3s linear forwards;
-    user-select: none;
-    pointer-events: none;
-  }
-
-  @keyframes floatUp {
-    from {
-      transform: translateY(0) rotate(0deg);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(-120vh) rotate(360deg);
-      opacity: 0;
+  
+  function launchFlowers() {
+    const container = eggModal.querySelector('.easter-egg-flowers');
+    if (!container) return;
+    container.innerHTML = '';
+    const emojis = ['🌸','🌼','🌷','💮','✨','🌺'];
+    for(let i=0;i<18;i++){
+      const flower = document.createElement('span');
+      flower.className = 'easter-egg-flower';
+      flower.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      flower.style.left = Math.random()*96 + 'vw';
+      flower.style.top = '-40px';
+      flower.style.fontSize = (1.6 + Math.random()*1.2) + 'rem';
+      flower.style.animationDelay = (Math.random()*1.2) + 's';
+      container.appendChild(flower);
+      setTimeout(()=>flower.remove(), 5200);
     }
   }
-
-  .hidden {
-    display: none;
+    function hideEggModal() {
+    eggModal.style.opacity = '0';
+    eggModal.style.pointerEvents = 'none';
+    // 可选：清空飘落的花朵
+    const container = eggModal.querySelector('.easter-egg-flowers');
+    if (container) container.innerHTML = '';
   }
-</style>
-
-<script>
-  let clickCount = 0;
-  const button = document.getElementById('secret-button');
-  const egg = document.getElementById('easter-egg');
-  const emojiContainer = document.getElementById('emoji-container');
-  const emojis = ["🌸", "✨", "🎈", "🎉", "💫", "🌟", "💖"];
-
-  function launchEmojis(count = 100) {
-    for (let i = 0; i < count; i++) {
-      const emoji = document.createElement("span");
-      emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-      emoji.style.left = Math.random() * 100 + "vw";
-      emoji.style.top = Math.random() * 100 + "vh";
-      emoji.style.animationDuration = 2 + Math.random() * 2 + "s";
-      emojiContainer.appendChild(emoji);
-      setTimeout(() => emoji.remove(), 4000);
-    }
+  
+  if (eggBtn) {
+    eggBtn.addEventListener('mousedown', () => {
+      eggTimer = setTimeout(showEggModal, 2000);
+    });
+    eggBtn.addEventListener('mouseup', () => clearTimeout(eggTimer));
+    eggBtn.addEventListener('mouseleave', () => clearTimeout(eggTimer));
+    eggBtn.addEventListener('touchstart', () => {
+      eggTimer = setTimeout(showEggModal, 2000);
+    });
+    eggBtn.addEventListener('touchend', () => clearTimeout(eggTimer));
   }
-
-  button.addEventListener('click', () => {
-    clickCount++;
-    if (clickCount === 5) {
-      egg.classList.add('active');
-      launchEmojis();
-    }
-  });
-
-  egg.addEventListener('click', () => {
-    egg.classList.remove('active');
-    emojiContainer.innerHTML = "";
-    clickCount = 0;
+  
+  eggModal.addEventListener('click', (e) => {
+    if (e.target.id === 'closeEgg' || e.target === eggModal) hideEggModal();
   });
 </script>
+
 </body>
 </html>
