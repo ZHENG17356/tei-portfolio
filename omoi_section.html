@@ -112,10 +112,15 @@
 
     .floating-text {
       font-size: 1.3rem;
-      opacity: 0.5;
+      opacity: 0;
       animation: float 6s ease-in-out infinite;
       color: #ccc;
       z-index: 1;
+      transition: opacity 1.6s ease;
+    }
+
+    .floating-text.visible {
+      opacity: 0.5;
     }
 
     @keyframes float {
@@ -135,12 +140,8 @@
     }
 
     @keyframes bounce {
-      0%, 100% {
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        transform: translateX(-50%) translateY(8px);
-      }
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
     }
 
     .button-group {
@@ -171,103 +172,213 @@
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
     }
 
+    .btn:focus {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
     @media (max-width: 600px) {
+      section {
+        padding: 3rem 1rem;
+      }
       .text-content {
         font-size: 1.2rem;
         line-height: 2.4rem;
         padding: 0 0.5rem;
       }
-
       .signature {
         font-size: 1.4rem;
       }
-
+      .btn {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.6rem;
+      }
       .button-group {
         flex-direction: column;
         align-items: center;
         gap: 1.2rem;
       }
     }
+
+    .modal {
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(2px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.4s ease;
+    }
+
+    .modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      background: #1c1c1c;
+      padding: 30px;
+      border-radius: 16px;
+      text-align: center;
+      color: #fff;
+      min-width: 280px;
+      max-width: 90%;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      animation: fadeIn 0.4s ease;
+    }
+
+    .modal-content a {
+      display: block;
+      margin: 12px 0;
+      color: #f5f5f5;
+      text-decoration: none;
+    }
+
+    .modal-content a:hover {
+      opacity: 0.7;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-size: 28px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
   </style>
 </head>
+
 <body>
+<script>document.documentElement.classList.remove('no-js');</script>
 
-  <script>
-    document.documentElement.classList.remove('no-js');
-  </script>
+<!-- Section 1 -->
+<section>
+  <video class="bg-video" autoplay muted loop playsinline poster="video_poster.jpg">
+    <source src="old_film.mp4" type="video/mp4">
+    お使いのブラウザは動画に対応していません。
+  </video>
+  <div class="video-overlay"></div>
+  <div class="text-content">
+    <p>小さい頃、父のカメラを借りて、</p>
+    <p>夢中で景色を撮っていた。</p>
+    <p>焦点も構図もバラバラだったけど、</p>
+    <p>「この瞬間を残したい」という気持ちだけは、</p>
+    <p>今でも胸の中にある。</p>
+  </div>
+  <div class="scroll-indicator"><span>&#x25BC;</span></div>
+</section>
 
-  <!-- Section 1 -->
-  <section>
-    <video class="bg-video" autoplay muted loop playsinline poster="video_poster.jpg">
-      <source src="old_film.mp4" type="video/mp4">
-      お使いのブラウザは動画に対応していません。
-    </video>
-    <div class="video-overlay"></div>
-    <div class="text-content">
-      <p>小さい頃、父のカメラを借りて、</p>
-      <p>夢中で景色を撮っていた。</p>
-      <p>焦点も構図もバラバラだったけど、</p>
-      <p>「この瞬間を残したい」という気持ちだけは、</p>
-      <p>今でも胸の中にある。</p>
-    </div>
-    <div class="scroll-indicator"><span>&#x25BC;</span></div>
-  </section>
+<!-- Section 2 -->
+<section style="background-color: #f2f2f2;">
+  <div class="text-content" style="color: #333; text-shadow: none;">
+    <p>気づけば、伝える方法が増えていた。</p>
+    <p>写真、空間、光、言葉。</p>
+    <p>誰かの心にふと触れるような、</p>
+    <p>小さな“気づき”や“あたたかさ”を届けたい。</p>
+    <p>それが、私のデザインの原点。</p>
+  </div>
+</section>
 
-  <!-- Section 2 -->
-  <section style="background-color: #f2f2f2;">
-    <div class="text-content" style="color: #333; text-shadow: none;">
-      <p>気づけば、伝える方法が増えていた。</p>
-      <p>写真、空間、光、言葉。</p>
-      <p>誰かの心にふと触れるような、</p>
-      <p>小さな“気づき”や“あたたかさ”を届けたい。</p>
-      <p>それが、私のデザインの原点。</p>
-    </div>
-  </section>
+<!-- Section 3 -->
+<section style="background-color: #ffffff;">
+  <div class="text-content" style="color: #333; text-shadow: none;">
+    <p>デザインは、美しさだけじゃない。</p>
+    <p>人と人をつなぐ“まなざし”だと思う。</p>
+    <p>子どもの頃のまなざしを、今も胸に。</p>
+    <div class="signature">テイテンメイ</div>
+  </div>
+</section>
 
-  <!-- Section 3 -->
-  <section style="background-color: #ffffff;">
-    <div class="text-content" style="color: #333; text-shadow: none;">
-      <p>デザインは、美しさだけじゃない。</p>
-      <p>人と人をつなぐ“まなざし”だと思う。</p>
-      <p>子どもの頃のまなざしを、今も胸に。</p>
-      <div class="signature">テイテンメイ</div>
-    </div>
-  </section>
+<!-- Section 4 -->
+<section style="background-color: #fafafa; height: auto; padding-bottom: 5rem;">
+  <div class="floating-text">また、どこかで出会えますように。</div>
+  <div class="button-group">
+    <a href="#" class="btn" id="openContact" aria-label="お問い合わせモーダルを開く">お問い合わせ</a>
+    <a href="index.html" class="btn">ホームに戻る</a>
+    <a href="https://www.instagram.com/tianming4854" class="btn" target="_blank">Instagramをフォロー</a>
+  </div>
+</section>
 
-  <!-- Section 4 -->
-  <section style="background-color: #fafafa; height: auto; padding-bottom: 5rem;">
-    <div class="floating-text">また、どこかで出会えますように。</div>
+<!-- お問い合わせモーダル -->
+<div id="contactModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <h2>お問い合わせ</h2>
+    <p>ご連絡は以下よりお願いいたします。</p>
+    <a href="mailto:zhengtian0308@gmail.com">📧 zhengtian0308@gmail.com</a>
+    <a href="tel:08074054567">📞 080-7405-4567</a>
+    <a href="https://www.instagram.com/tianming4854" target="_blank">📷 Instagram</a>
+  </div>
+</div>
 
-    <div class="button-group">
-      <a href="contact.html" class="btn">お問い合わせ</a>
-      <a href="index.html" class="btn">ホームに戻る</a>
-      <a href="https://www.instagram.com/tianming4854" class="btn" target="_blank">Instagramをフォロー</a>
-    </div>
-  </section>
+<!-- JavaScript -->
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const section = entry.target;
+        const textContent = section.querySelector('.text-content');
+        if (textContent) {
+          textContent.classList.add("visible");
+          const paragraphs = textContent.querySelectorAll('p');
+          paragraphs.forEach((p, i) => {
+            p.style.transitionDelay = `${i * 150}ms`;
+            p.classList.add('visible');
+          });
+        }
+        section.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.3 });
 
-  <!-- JavaScript for scroll animation -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
+  document.querySelectorAll("section").forEach(section => observer.observe(section));
+
+  // Floating Text Observer
+  const floatingText = document.querySelector('.floating-text');
+  if (floatingText) {
+    const floatObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const section = entry.target;
-          const textContent = section.querySelector('.text-content');
-          if (textContent) {
-            textContent.classList.add("visible");
-
-            const paragraphs = textContent.querySelectorAll('p');
-            paragraphs.forEach((p, i) => {
-              p.style.transitionDelay = `${i * 150}ms`;
-              p.classList.add('visible');
-            });
-          }
-          section.classList.add("visible");
+          floatingText.classList.add('visible');
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.5 });
+    floatObserver.observe(floatingText);
+  }
 
-    document.querySelectorAll("section").forEach(section => observer.observe(section));
-  </script>
+  // Modal Control
+  const modal = document.getElementById("contactModal");
+  const openBtn = document.getElementById("openContact");
+  const closeBtn = document.querySelector(".close-btn");
+
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    modal.classList.add("active");
+  });
+
+  closeBtn.addEventListener('click', () => {
+    modal.classList.remove("active");
+  });
+
+  window.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+</script>
 
 </body>
 </html>
