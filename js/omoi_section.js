@@ -57,10 +57,10 @@ document.documentElement.classList.remove('no-js');
   // 彩蛋弹窗，修改版
   const eggModal = document.createElement('div');
   eggModal.className = 'easter-egg-modal';
-  eggModal.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.92);z-index:10020;opacity:0;pointer-events:none;transition:opacity 0.5s;';
+  eggModal.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(18,18,18,0.92);z-index:10020;opacity:0;pointer-events:none;transition:opacity 0.5s;';
     eggModal.innerHTML = `
     <div class="easter-egg-flowers"></div>
-    <div style="background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.13);padding:2.2em 2em 1.5em 2em;text-align:center;min-width:240px;max-width:90vw;">
+    <div style="background:#121212;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.5);padding:2.2em 2em 1.5em 2em;text-align:center;color:#fff;min-width:240px;max-width:90vw;">
       <div style="font-size:2.2em;">🌸</div>
       <div style="margin:1em 0 0.5em 0;">ここまで読んでくれて、ありがとう！</div>
       <div style="font-size:1em;opacity:0.7;">あなたの日常にも、やさしい光が降り注ぎますように。</div>
@@ -87,6 +87,7 @@ document.documentElement.classList.remove('no-js');
       flower.style.left = Math.random()*96 + 'vw';
       flower.style.top = '-40px';
       flower.style.fontSize = (1.6 + Math.random()*1.2) + 'rem';
+      flower.style.animation = 'fall 5s linear forwards';
       flower.style.animationDelay = (Math.random()*1.2) + 's';
       container.appendChild(flower);
       setTimeout(()=>flower.remove(), 5200);
