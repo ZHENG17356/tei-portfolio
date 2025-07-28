@@ -1,0 +1,88 @@
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background-color: #111;
+      color: #eee;
+      min-height: 100vh;
+    }
+
+    main {
+      width: 100%;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 60px;
+      letter-spacing: 2px;
+    }
+
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .photo-block {
+      max-width: 600px;
+      margin: 0 auto 80px auto;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      padding-bottom: 40px;
+      will-change: opacity, transform;
+    }
+
+    .photo-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .photo-block img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      display: block;
+      margin: 0 auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      max-width: 100vw;
+    }
+
+    .photo-block img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .caption {
+      margin-top: 16px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #ccc;
+    }
+
+    .button-links {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    /* Buttons use shared "nav-button" style */
+
+    @media (max-width: 600px) {
+      .photo-block {
+        max-width: 90%;
+      }
+
+      h1 {
+        font-size: 1.6em;
+      }
+
+      .caption {
+        font-size: 0.9rem;
+      }
+
+      /* responsive layout only */
+    }

@@ -12,302 +12,12 @@
   <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/omoi_section.css">
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      font-family: 'Noto Sans JP', sans-serif;
-      scroll-behavior: smooth;
-      background-color: #000;
-    }
-
-    section {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      overflow: hidden;
-      padding: 4rem 1rem;
-      opacity: 0;
-      transition: opacity 1.4s ease;
-      will-change: opacity, transform;
-    }
-
-    html.no-js section {
-      opacity: 1;
-    }
-
-    section.visible {
-      opacity: 1;
-    }
-
-    .bg-video {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 2s ease;
-      z-index: 0;
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.4);
-      z-index: 1;
-    }
-
-    .text-content {
-      position: relative;
-      z-index: 2;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 1.4s ease, transform 1.4s ease;
-      color: white;
-      text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-      font-size: 2.2rem;
-      line-height: 3.6rem;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-      text-align: center;
-      will-change: opacity, transform;
-    }
-
-    .text-content p {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .text-content.visible p {
-      opacity: 1;
-      transform: none;
-    }
-
-    .visible .text-content {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .visible video.bg-video {
-      opacity: 1;
-    }
-
-    .signature {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 2rem;
-      margin-top: 2rem;
-      opacity: 0.7;
-    }
-
-    .floating-text {
-      font-size: 1.3rem;
-      opacity: 0;
-      animation: float 6s ease-in-out infinite;
-      color: #ccc;
-      z-index: 1;
-      transition: opacity 1.6s ease;
-    }
-
-    .floating-text.visible {
-      opacity: 0.5;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.8rem;
-      color: rgba(255, 255, 255, 0.1);
-      animation: bounce 2s infinite;
-      z-index: 3;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
-
-    .button-group {
-      margin-top: 2rem;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.4rem;
-      z-index: 2;
-      position: relative;
-    }
-
-    /* Buttons share global nav-button style */
-
-    @media (max-width: 600px) {
-      section {
-        padding: 3rem 1rem;
-      }
-      .text-content {
-        font-size: 1.2rem;
-        line-height: 2.4rem;
-        padding: 0 0.5rem;
-      }
-      .signature {
-        font-size: 1.4rem;
-      }
-      /* button sizing handled globally */
-      .button-group {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.2rem;
-      }
-    }
-
-    .modal {
-      opacity: 0;
-      pointer-events: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.55);
-      backdrop-filter: blur(2px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.4s ease;
-    }
-
-    .modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-content {
-      position: relative;
-      background: #1c1c1c;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-      color: #fff;
-      min-width: 280px;
-      max-width: 90%;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-      animation: fadeIn 0.4s ease;
-    }
-
-    .modal-content a {
-      display: block;
-      margin: 12px 0;
-      color: #f5f5f5;
-      text-decoration: none;
-    }
-
-    .modal-content a:hover {
-      opacity: 0.7;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 16px;
-      right: 24px;
-      font-size: 28px;
-      color: #aaa;
-      cursor: pointer;
-    }
-
-    @keyframes fadeIn {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-        .easter-egg-btn {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      background: rgba(240, 240, 240, 0.599);
-      border-radius: 50%;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-      cursor: pointer;
-      user-select: none;
-      transition: opacity 0.3s, box-shadow 0.3s;
-    }
-    .easter-egg-btn:hover {
-      opacity: 1;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
-    }
-    .easter-egg-btn span {
-      font-size: 1.3em;
-      color: #888;
-      font-weight: bold;
-      pointer-events: none;
-    }
-    .egg-tooltip {
-      display: none;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 48px;
-      background: #222;
-      color: #fff;
-      font-size: 0.78em;
-      padding: 2px 8px;
-      border-radius: 8px;
-      white-space: nowrap;
-      opacity: 0.55;
-      pointer-events: none;
-      z-index: 10011;
-    }
-    .easter-egg-btn:hover .egg-tooltip {
-      display: block;
-    }
-        .easter-egg-flowers {
-      position: fixed;
-      pointer-events: none;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      z-index: 10021;
-    }
-    .easter-egg-flower {
-      position: absolute;
-      font-size: 2rem;
-      opacity: 0.85;
-      animation: fall 5s linear forwards;
-    }
-       @keyframes fall {
-  0% {
-    transform: translateY(-40px) rotate(0deg) scale(1);
-  }
-  100% {
-    transform: translateY(150vh) rotate(360deg) scale(0.7);
-    opacity: 1;
-  }
-}
-.easter-egg-btn, .easter-egg-btn * {
-  -webkit-user-select: none;
-  user-select: none;
-}
-  </style>
 </head>
 
 <body>
-<script>document.documentElement.classList.remove('no-js');</script>
 
 <!-- Section 1 -->
 <section>
@@ -323,12 +33,12 @@
     <p>「この瞬間を残したい」という気持ちだけは、</p>
     <p>今でも胸の中にある。</p>
   </div>
-  <div class="scroll-indicator"><span>&#x25BC;</span></div>
+  <div class="scroll-indicator bounce"><span>&#x25BC;</span></div>
 </section>
 
 <!-- Section 2 -->
-<section style="background-color: #f2f2f2;">
-  <div class="text-content" style="color: #333; text-shadow: none;">
+<section class="bg-light-gray">
+  <div class="text-content text-dark">
     <p>気づけば、伝える方法が増えていた。</p>
     <p>写真、空間、光、言葉。</p>
     <p>誰かの心にふと触れるような、</p>
@@ -338,8 +48,8 @@
 </section>
 
 <!-- Section 3 -->
-<section style="background-color: #ffffff;">
-  <div class="text-content" style="color: #333; text-shadow: none;">
+<section class="bg-white">
+  <div class="text-content text-dark">
     <p>デザインは、美しさだけじゃない。</p>
     <p>人と人をつなぐ“まなざし”だと思う。</p>
     <p>子どもの頃のまなざしを、今も胸に。</p>
@@ -348,23 +58,23 @@
 </section>
 
 <!-- Section 4 -->
-<section style="background-color: #fafafa; height: auto; padding-bottom: 5rem;">
-  <div class="floating-text">また、どこかで出会えますように。</div>
+<section class="final-section">
+  <div class="floating-text float">また、どこかで出会えますように。</div>
   <div class="button-group">
     <a href="#" class="nav-button" id="openContact" aria-label="お問い合わせモーダルを開く">お問い合わせ</a>
     <a href="index.html" class="nav-button">ホームに戻る</a>
     <a href="https://www.instagram.com/tianming4854" class="nav-button" target="_blank">Instagramをフォロー</a>
   </div>
   <!-- 这里插入问号按钮 -->
-  <div id="easterEggBtn" class="easter-egg-btn" title="長押しでサプライズ" style="margin:2.5rem auto 0; opacity:0.7;">
+  <div id="easterEggBtn" class="easter-egg-btn" title="長押しでサプライズ">
     <span>?</span>
-    <div class="egg-tooltip" style="position:absolute; left:50%; transform:translateX(-50%); bottom:48px;">長押しでサプライズ</div>
+    <div class="egg-tooltip">長押しでサプライズ</div>
      </div>
 </section>
 
 <!-- お問い合わせモーダル -->
-<div id="contactModal" class="modal">
-  <div class="modal-content">
+<div id="contactModal" class="modal fade-in">
+  <div class="modal-content scale-in">
     <span class="close-btn">&times;</span>
     <h2>お問い合わせ</h2>
     <p>ご連絡は以下よりお願いいたします。</p>
@@ -374,125 +84,6 @@
   </div>
 </div>
 
-<!-- JavaScript -->
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const section = entry.target;
-        const textContent = section.querySelector('.text-content');
-        if (textContent) {
-          textContent.classList.add("visible");
-          const paragraphs = textContent.querySelectorAll('p');
-          paragraphs.forEach((p, i) => {
-            p.style.transitionDelay = `${i * 150}ms`;
-            p.classList.add('visible');
-          });
-        }
-        section.classList.add("visible");
-      }
-    });
-  }, { threshold: 0.3 });
-
-  document.querySelectorAll("section").forEach(section => observer.observe(section));
-
-  // Floating Text Observer
-  const floatingText = document.querySelector('.floating-text');
-  if (floatingText) {
-    const floatObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          floatingText.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.5 });
-    floatObserver.observe(floatingText);
-  }
-
-  // Modal Control
-  const modal = document.getElementById("contactModal");
-  const openBtn = document.getElementById("openContact");
-  const closeBtn = document.querySelector(".close-btn");
-
-  openBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.classList.add("active");
-  });
-
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove("active");
-  });
-
-  window.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("active");
-    }
-  });
-    const eggBtn = document.getElementById('easterEggBtn');
-  let eggTimer = null;
-  
-  // 彩蛋弹窗，修改版
-  const eggModal = document.createElement('div');
-  eggModal.className = 'easter-egg-modal';
-  eggModal.style = 'position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.92);z-index:10020;opacity:0;pointer-events:none;transition:opacity 0.5s;';
-    eggModal.innerHTML = `
-    <div class="easter-egg-flowers"></div>
-    <div style="background:#fff;border-radius:18px;box-shadow:0 8px 32px rgba(0,0,0,0.13);padding:2.2em 2em 1.5em 2em;text-align:center;min-width:240px;max-width:90vw;">
-      <div style="font-size:2.2em;">🌸</div>
-      <div style="margin:1em 0 0.5em 0;">ここまで読んでくれて、ありがとう！</div>
-      <div style="font-size:1em;opacity:0.7;">あなたの日常にも、やさしい光が降り注ぎますように。</div>
-      <button id="closeEgg" class="nav-button" style="margin-top:2em;">閉じる</button>
-    </div>
-  `;
-  document.body.appendChild(eggModal);
-  
-    function showEggModal() {
-    eggModal.style.opacity = '1';
-    eggModal.style.pointerEvents = 'auto';
-    launchFlowers();
-  }
-  
-  function launchFlowers() {
-    const container = eggModal.querySelector('.easter-egg-flowers');
-    if (!container) return;
-    container.innerHTML = '';
-    const emojis = ['🌸','🌼','🌷','💮','✨','🌺'];
-    for(let i=0;i<18;i++){
-      const flower = document.createElement('span');
-      flower.className = 'easter-egg-flower';
-      flower.textContent = emojis[Math.floor(Math.random()*emojis.length)];
-      flower.style.left = Math.random()*96 + 'vw';
-      flower.style.top = '-40px';
-      flower.style.fontSize = (1.6 + Math.random()*1.2) + 'rem';
-      flower.style.animationDelay = (Math.random()*1.2) + 's';
-      container.appendChild(flower);
-      setTimeout(()=>flower.remove(), 5200);
-    }
-  }
-    function hideEggModal() {
-    eggModal.style.opacity = '0';
-    eggModal.style.pointerEvents = 'none';
-    // 可选：清空飘落的花朵
-    const container = eggModal.querySelector('.easter-egg-flowers');
-    if (container) container.innerHTML = '';
-  }
-  
-  if (eggBtn) {
-    eggBtn.addEventListener('mousedown', () => {
-      eggTimer = setTimeout(showEggModal, 2000);
-    });
-    eggBtn.addEventListener('mouseup', () => clearTimeout(eggTimer));
-    eggBtn.addEventListener('mouseleave', () => clearTimeout(eggTimer));
-    eggBtn.addEventListener('touchstart', () => {
-      eggTimer = setTimeout(showEggModal, 2000);
-    });
-    eggBtn.addEventListener('touchend', () => clearTimeout(eggTimer));
-  }
-  
-  eggModal.addEventListener('click', (e) => {
-    if (e.target.id === 'closeEgg' || e.target === eggModal) hideEggModal();
-  });
-</script>
-
+  <script src="js/omoi_section.js" defer></script>
 </body>
 </html>
