@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>誰かの日常を、静かに支える視点</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
@@ -99,21 +100,7 @@
       gap: 20px;
       flex-wrap: wrap;
     }
-    .btn {
-      background-color: #333;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-size: 1em;
-      letter-spacing: 0.05em;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn:hover {
-      background-color: #555;
-      transform: translateY(-2px);
-    }
+    /* Buttons rely on shared "nav-button" style */
 
     /* 渐显动画 */
     .fade-up {
@@ -201,8 +188,8 @@
     </div>
 
     <div class="button-group fade-up">
-      <a href="javascript:history.back()" class="btn">戻る</a>
-      <a href="/index.html" class="btn">ホームへ</a>
+      <a href="javascript:history.back()" class="nav-button">戻る</a>
+      <a href="/index.html" class="nav-button">ホームへ</a>
     </div>
 
     <footer class="fade-up">

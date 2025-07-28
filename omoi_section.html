@@ -11,6 +11,7 @@
 
   <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     * {
@@ -154,28 +155,7 @@
       position: relative;
     }
 
-    .btn {
-      background: linear-gradient(to right, #ffffff 0%, #f0f0f0 100%);
-      color: #000;
-      border: none;
-      padding: 0.6rem 1.4rem;
-      font-size: 1rem;
-      border-radius: 30px;
-      box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      transition: all 0.3s ease, box-shadow 0.5s ease;
-      text-decoration: none;
-    }
-
-    .btn:hover {
-      background: linear-gradient(to right, #111 0%, #333 100%);
-      color: #fff;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    }
-
-    .btn:focus {
-      outline: 2px solid #fff;
-      outline-offset: 4px;
-    }
+    /* Buttons share global nav-button style */
 
     @media (max-width: 600px) {
       section {
@@ -189,10 +169,7 @@
       .signature {
         font-size: 1.4rem;
       }
-      .btn {
-        font-size: 1.1rem;
-        padding: 0.8rem 1.6rem;
-      }
+      /* button sizing handled globally */
       .button-group {
         flex-direction: column;
         align-items: center;
@@ -375,9 +352,9 @@
 <section style="background-color: #fafafa; height: auto; padding-bottom: 5rem;">
   <div class="floating-text">また、どこかで出会えますように。</div>
   <div class="button-group">
-    <a href="#" class="btn" id="openContact" aria-label="お問い合わせモーダルを開く">お問い合わせ</a>
-    <a href="index.html" class="btn">ホームに戻る</a>
-    <a href="https://www.instagram.com/tianming4854" class="btn" target="_blank">Instagramをフォロー</a>
+    <a href="#" class="nav-button" id="openContact" aria-label="お問い合わせモーダルを開く">お問い合わせ</a>
+    <a href="index.html" class="nav-button">ホームに戻る</a>
+    <a href="https://www.instagram.com/tianming4854" class="nav-button" target="_blank">Instagramをフォロー</a>
   </div>
   <!-- 这里插入问号按钮 -->
   <div id="easterEggBtn" class="easter-egg-btn" title="長押しでサプライズ" style="margin:2.5rem auto 0; opacity:0.7;">
@@ -465,7 +442,7 @@
       <div style="font-size:2.2em;">🌸</div>
       <div style="margin:1em 0 0.5em 0;">ここまで読んでくれて、ありがとう！</div>
       <div style="font-size:1em;opacity:0.7;">あなたの日常にも、やさしい光が降り注ぎますように。</div>
-      <button id="closeEgg" class="btn" style="margin-top:2em;">閉じる</button>
+      <button id="closeEgg" class="nav-button" style="margin-top:2em;">閉じる</button>
     </div>
   `;
   document.body.appendChild(eggModal);

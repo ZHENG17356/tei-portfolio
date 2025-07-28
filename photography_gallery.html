@@ -15,6 +15,7 @@
 
   <!-- 字体 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
@@ -88,22 +89,7 @@
       margin-top: 40px;
     }
 
-    .button-links a {
-      text-decoration: none;
-      color: #eee;
-      border: 1px solid #888;
-      padding: 10px 20px;
-      border-radius: 30px;
-      margin: 0 10px;
-      display: inline-block;
-      transition: 0.3s ease;
-    }
-
-    .button-links a:hover,
-    .button-links a:focus {
-      background: rgba(255,255,255,0.08);
-      outline: 2px solid #aaa;
-    }
+    /* Buttons use shared "nav-button" style */
 
     @media (max-width: 600px) {
       .photo-block {
@@ -118,11 +104,7 @@
         font-size: 0.9rem;
       }
 
-      .button-links a {
-        display: block;
-        margin: 10px auto;
-        width: 80%;
-      }
+      /* responsive layout only */
     }
   </style>
 
@@ -158,8 +140,8 @@
 
   <!-- 返回按钮 -->
   <div class="button-links">
-    <a href="javascript:history.back()" aria-label="前のページに戻る">← 戻る</a>
-    <a href="index.html" aria-label="ホームページへ戻る">ホームへ</a>
+    <a href="javascript:history.back()" class="nav-button" aria-label="前のページに戻る">← 戻る</a>
+    <a href="index.html" class="nav-button" aria-label="ホームページへ戻る">ホームへ</a>
   </div>
 </main>
 

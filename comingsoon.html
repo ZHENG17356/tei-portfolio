@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>🚧 WORK IN PROGRESS 🚧</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
@@ -59,21 +60,7 @@
       justify-content: center;
     }
 
-    .buttons a {
-      color: #eee;
-      border: 1px solid #888;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: 0.3s ease;
-      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
-    }
-
-    .buttons a:hover,
-    .buttons a:focus {
-      background: rgba(255, 255, 255, 0.08);
-      outline: 2px solid #aaa;
-    }
+    /* Buttons style is provided by the shared nav-button class */
 
     @media (max-width: 600px) {
       h1 { font-size: 1.8em; }
@@ -82,9 +69,7 @@
         flex-direction: column;
         gap: 14px;
       }
-      .buttons a {
-        width: 90%;
-      }
+      /* width responsive for buttons handled outside */
     }
   </style>
 </head>
@@ -94,9 +79,9 @@
   <p class="message">このページは現在準備中です。公開までしばらくお待ちください。</p>
 
   <div class="buttons">
-     <a href="javascript:history.back()">↩️ 前のページへ戻る</a>
-    <a href="index.html">🔙 ホームへ戻る</a>
-    <a href="mailto:zhengtian0308@gmail.com?subject=ポートフォリオへのご意見">💬 意見を送る</a>
+     <a href="javascript:history.back()" class="nav-button">↩️ 前のページへ戻る</a>
+    <a href="index.html" class="nav-button">🔙 ホームへ戻る</a>
+    <a href="mailto:zhengtian0308@gmail.com?subject=ポートフォリオへのご意見" class="nav-button">💬 意見を送る</a>
   </div>
   
 </body>

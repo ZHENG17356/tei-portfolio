@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Design Skills | テイテンメイ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
     <style>
     body {
       margin: 0;
@@ -95,23 +96,7 @@
       margin-top: 60px;
     }
 
-    .back-links a {
-      display: inline-block;
-      margin: 10px 12px;
-      padding: 10px 20px;
-      border: 1px solid #888;
-      border-radius: 16px;
-      color: #ccc;
-      text-decoration: none;
-      font-size: 0.95em;
-      transition: all 0.3s ease;
-    }
-
-    .back-links a:hover {
-      color: #fff;
-      border-color: #fff;
-      background-color: rgba(255,255,255,0.05);
-    }
+    /* Links inside use shared "nav-button" style */
 
     .modal {
       display: none;
@@ -186,8 +171,8 @@
   </div>
 
   <div class="back-links">
-    <a href="javascript:history.back()">← 戻る</a>
-    <a href="index.html">ホームへ</a>
+    <a href="javascript:history.back()" class="nav-button">← 戻る</a>
+    <a href="index.html" class="nav-button">ホームへ</a>
   </div>
 
   <div id="modal" class="modal">

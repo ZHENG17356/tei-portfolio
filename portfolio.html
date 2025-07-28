@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>作品集 | テイテンメイ</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
@@ -78,24 +79,8 @@
       margin-top: 40px;
     }
 
-    .back-button {
-      display: inline-block;
-      padding: 10px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 16px;
-      color: #fff;
-      font-size: 1rem;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      background-color: transparent;
-      transition: all 0.3s ease;
-    }
-
-    .back-button:hover {
-      background-color: rgba(255, 255, 255, 0.08);
-      border-color: #fff;
-      color: #fff;
-    }
+    /* Layout for the wrapper remains local; button styling comes
+       from the shared "nav-button" class defined in style.css. */
 
     @media (max-width: 600px) {
       body {
@@ -126,11 +111,7 @@
         font-size: 13px;
         line-height: 1.5;
       }
-      .back-button {
-        font-size: 0.9rem;
-        padding: 8px 22px;
-        border-radius: 12px;
-      }
+      /* responsive adjustments rely on shared nav-button styles */
     }
   </style>
 </head>
@@ -168,7 +149,7 @@
 
     <!-- 🔙 返回按钮 -->
     <div class="back-button-wrapper">
-      <a href="index.html" class="back-button">ホームへ戻る</a>
+      <a href="index.html" class="nav-button">ホームへ戻る</a>
     </div>
 
   </div>
