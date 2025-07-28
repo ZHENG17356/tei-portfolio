@@ -40,8 +40,29 @@
       background-color: #ffffff;
     }
 
+    /* 新しいセクション背景グラデーション */
+    .section1 {
+      background: linear-gradient(to bottom, #e8f2fb, #f4f7fa);
+    }
+
+    .section2 {
+      background: linear-gradient(to bottom, #fef3e3, #f9f0ea);
+    }
+
+    .section3 {
+      background: linear-gradient(to bottom, #fbe7ed, #fff6f9);
+    }
+
     .final-section {
       background-color: #fafafa;
+      height: auto;
+      padding-bottom: 5rem;
+    }
+
+    /* 新しい最終セクションのスタイル */
+    .section-final {
+      background-color: #1c1c1e;
+      color: #ffffff;
       height: auto;
       padding-bottom: 5rem;
     }
