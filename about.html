@@ -13,110 +13,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/about.css">
 
-  <style>
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #111;
-      color: #fff;
-      line-height: 1.7;
-    }
-
-    main {
-      width: 100%;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 2.4em;
-      margin-bottom: 30px;
-      border-bottom: 2px solid #fff;
-      display: inline-block;
-    }
-
-    .section-title {
-      font-size: 1.6em;
-      margin: 80px 0 30px;
-      border-left: 6px solid #ccc;
-      padding-left: 12px;
-      color: #ccc;
-    }
-
-    .row {
-      display: flex;
-      gap: 30px;
-      margin-bottom: 60px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .row.reverse {
-      flex-direction: row-reverse;
-    }
-
-    .photo {
-      flex: 1;
-      min-width: 250px;
-      max-width: 320px;
-      overflow: hidden;
-    }
-
-    .photo img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(255,255,255,0.1);
-      transition: transform 0.4s ease;
-    }
-
-    .photo img:hover {
-      transform: scale(1.05);
-    }
-
-    .text {
-      flex: 2;
-      min-width: 260px;
-    }
-
-    h2 {
-      margin-bottom: 0.5em;
-      font-size: 1.4em;
-    }
-
-    p.highlight {
-      font-weight: bold;
-      color: #ddd;
-      margin-top: 20px;
-    }
-
-    .back-button-container {
-      text-align: center;
-      margin-top: 80px;
-      margin-bottom: 60px;
-    }
-
-    /*
-      Back/home buttons share global style in style.css via the
-      "nav-button" class. This container only controls layout.
-    */
-
-    @media screen and (max-width: 768px) {
-      .row, .row.reverse {
-        flex-direction: column;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-  </style>
 </head>
 
 <body>
@@ -138,7 +37,7 @@
 
       <!-- 活动标题 -->
       <div class="section-title" data-aos="fade-up">学生時代の主な活動紹介</div>
-      <p style="margin-top: -10px; font-weight: bold; font-size: 1.1em;" data-aos="fade-up">
+      <p class="project-note" data-aos="fade-up">
         　▶︎ 参加プロジェクト名：「新宿多文化交流フレンドシッププロジェクト」（主催：東京青年会議所）
       </p>
 
@@ -196,12 +95,7 @@
   </main>
 
   <!-- AOS アニメーションライブラリ -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script src="js/about.js" defer></script>
 </body>
 </html>

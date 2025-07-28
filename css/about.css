@@ -1,0 +1,107 @@
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #111;
+      color: #fff;
+      line-height: 1.7;
+    }
+
+    main {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2.4em;
+      margin-bottom: 30px;
+      border-bottom: 2px solid #fff;
+      display: inline-block;
+    }
+
+    .section-title {
+      font-size: 1.6em;
+      margin: 80px 0 30px;
+      border-left: 6px solid #ccc;
+      padding-left: 12px;
+      color: #ccc;
+    }
+
+    .project-note {
+      margin-top: -10px;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .row {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 60px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .photo {
+      flex: 1;
+      min-width: 250px;
+      max-width: 320px;
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.1);
+      transition: transform 0.4s ease;
+    }
+
+    .photo img:hover {
+      transform: scale(1.05);
+    }
+
+    .text {
+      flex: 2;
+      min-width: 260px;
+    }
+
+    h2 {
+      margin-bottom: 0.5em;
+      font-size: 1.4em;
+    }
+
+    p.highlight {
+      font-weight: bold;
+      color: #ddd;
+      margin-top: 20px;
+    }
+
+    .back-button-container {
+      text-align: center;
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+
+    /*
+      Back/home buttons share global style in style.css via the
+      "nav-button" class. This container only controls layout.
+    */
+
+    @media screen and (max-width: 768px) {
+      .row, .row.reverse {
+        flex-direction: column;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }

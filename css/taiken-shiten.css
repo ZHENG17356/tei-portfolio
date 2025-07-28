@@ -1,0 +1,128 @@
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      background-color: #111;
+      color: #fff;
+      line-height: 1.9;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 80px 20px 100px 20px;
+    }
+    h1 {
+      font-size: 2.6em;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 25px;
+      text-align: center;
+      line-height: 1.1;
+    }
+    p.lead {
+      font-size: 1.3em;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-align: center;
+      color: #bbb;
+      margin-bottom: 60px;
+    }
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+    .photo-grid figure {
+      margin: 0;
+    }
+    .photo-grid img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.13);
+      transition: box-shadow 0.3s;
+      cursor: zoom-in;
+    }
+    .photo-grid img:hover {
+      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.22);
+    }
+    .photo-grid figcaption {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.93em;
+      color: #ccc;
+      letter-spacing: 0.02em;
+    }
+    .section {
+      margin-bottom: 60px;
+      font-size: 1.08em;
+    }
+    .section p {
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 2.1;
+      font-size: 1.07em;
+    }
+    .quote {
+      font-style: italic;
+      text-align: center;
+      margin: 60px 0;
+      color: #aaa;
+      font-size: 1.1em;
+      letter-spacing: 0.04em;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.85em;
+      color: #777;
+      margin-top: 40px;
+      padding-bottom: 20px;
+    }
+
+    /* ボタンエリア */
+    .button-group {
+      margin-top: 40px;
+      margin-bottom: 80px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    /* Buttons rely on shared "nav-button" style */
+
+
+
+    /* 图片放大遮罩 */
+    .img-modal-bg {
+      display: none;
+      position: fixed;
+      z-index: 99;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.72);
+      align-items: center;
+      justify-content: center;
+      cursor: zoom-out;
+      transition: background 0.25s;
+    }
+    .img-modal-bg.active { display: flex; }
+    .img-modal-bg img {
+      max-width: 92vw; max-height: 82vh;
+      border-radius: 20px;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.33);
+      background: #222;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5em; }
+      p.lead { font-size: 1em; }
+      .container { padding: 36px 8px 54px 8px; }
+      .photo-grid { grid-template-columns: 1fr; gap: 18px; }
+      .section p { font-size: 0.98em; }
+      .img-modal-bg img { max-width: 98vw; max-height: 70vh; }
+    }
