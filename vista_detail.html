@@ -5,6 +5,7 @@
   <title>Vista in the Sky | テイテンメイ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       font-family: 'Noto Sans JP', sans-serif;
@@ -110,19 +111,7 @@
       text-align: center;
     }
 
-    nav.back a {
-      color: #fff;
-      border: 1px solid #fff;
-      padding: 10px 24px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    nav.back a:hover {
-      background-color: #fff;
-      color: #111;
-    }
+    /* nav.back only controls layout; button style is global */
 
     footer {
       text-align: center;
@@ -201,7 +190,7 @@
 
     <!-- 戻る -->
     <nav class="back">
-      <a href="portfolio.html">← 作品一覧に戻る</a>
+      <a href="portfolio.html" class="nav-button">← 作品一覧に戻る</a>
     </nav>
 
     <!-- 版权 -->

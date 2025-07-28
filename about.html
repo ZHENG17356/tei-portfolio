@@ -12,6 +12,7 @@
   <!-- フォント & アニメーション -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
 
   <style>
     body {
@@ -102,22 +103,10 @@
       margin-bottom: 60px;
     }
 
-    .back-button {
-      display: inline-block;
-      padding: 12px 28px;
-      border: 1.5px solid #ccc;
-      border-radius: 30px;
-      color: #ccc;
-      text-decoration: none;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    .back-button:hover {
-      background-color: #fff;
-      color: #111;
-      border-color: #fff;
-    }
+    /*
+      Back/home buttons share global style in style.css via the
+      "nav-button" class. This container only controls layout.
+    */
 
     @media screen and (max-width: 768px) {
       .row, .row.reverse {
@@ -200,7 +189,7 @@
 
       <!-- 👇 返回按钮放这里 -->
       <div class="back-button-container" data-aos="fade-up">
-        <a href="index.html" class="back-button">← ホームに戻る</a>
+        <a href="index.html" class="nav-button">← ホームに戻る</a>
       </div>
 
     </div>
