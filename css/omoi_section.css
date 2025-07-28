@@ -42,15 +42,15 @@
 
     /* 新しいセクション背景グラデーション */
     .section1 {
-      background: linear-gradient(to bottom, #e8f2fb, #f4f7fa);
+      background: linear-gradient(to bottom, #111827, #1f2937);
     }
 
     .section2 {
-      background: linear-gradient(to bottom, #fef3e3, #f9f0ea);
+      background: linear-gradient(to bottom, #111827, #1f2937);
     }
 
     .section3 {
-      background: linear-gradient(to bottom, #fbe7ed, #fff6f9);
+      background: linear-gradient(to bottom, #111827, #1f2937);
     }
 
     .final-section {
@@ -63,7 +63,7 @@
     .section-final {
       height: 35vh;
       min-height: 35vh;
-      background: linear-gradient(to bottom, rgba(28, 28, 30, 0.0), #1c1c1e);
+      background: linear-gradient(to bottom, #111827, #1f2937);
       color: #ffffff;
       display: flex;
       flex-direction: column;
@@ -177,6 +177,8 @@
 
     @media (max-width: 600px) {
       section {
+        min-height: auto;
+        height: auto;
         padding: 3rem 1rem;
       }
       .text-content {
@@ -192,6 +194,11 @@
         flex-direction: column;
         align-items: center;
         gap: 1.2rem;
+      }
+      .section-final {
+        height: auto;
+        min-height: auto;
+        padding-bottom: 5rem;
       }
     }
 
