@@ -192,7 +192,7 @@
 
 <body>
   <!-- 背景動画 -->
-  <video autoplay loop muted playsinline class="video-background" aria-label="背景動画" title="背景動画" poster="bg_poster.jpg">
+  <video autoplay loop muted playsinline preload="auto" class="video-background" aria-label="背景動画" title="背景動画" poster="bg_poster.jpg">
     <source src="bg.webm" type="video/webm">
   <source src="bg.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -220,5 +220,26 @@
 
   <!-- フッター -->
   <div class="footer">© テイテンメイ 2025</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var video = document.querySelector('.video-background');
+      if (video) {
+        video.muted = true;
+        var playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function() {
+            var attemptPlay = function() {
+              video.play();
+              document.removeEventListener('touchstart', attemptPlay);
+              document.removeEventListener('click', attemptPlay);
+            };
+            document.addEventListener('touchstart', attemptPlay, { once: true });
+            document.addEventListener('click', attemptPlay, { once: true });
+          });
+        }
+      }
+    });
+  </script>
 </body>
 </html>
