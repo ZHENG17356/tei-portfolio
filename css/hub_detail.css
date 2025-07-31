@@ -201,3 +201,12 @@ footer {
   text-align: center;
   margin-top: 20px;
 }
+.embedded-video {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  display: block;
+  margin: 0 auto 2em;
+}
