@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>HUB of SENSES | テイテンメイ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/hub_detail.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>HUB of SENSES</h1>
+    <div class="subheading">音・香り・光を使って感覚をつなぐ交流拠点</div>
+
+    <!-- 1. 封面图 -->
+    <div class="section gallery">
+      <img src="imagesproject2.webp" alt="HUB of SENSES メインビジュアル" class="gallery-img" loading="lazy">
+    </div>
+
+    <!-- 2. 概念与说明 -->
+    <div class="section">
+      <h2>プロジェクトの背景</h2>
+      <p>
+        五感を使ったコミュニケーションの場をつくる演習課題です。<br>
+        音の反響、香りの広がり、やわらかな光を重ね合わせ、
+        心身ともにリラックスできる交流拠点を目指しました。
+      </p>
+    </div>
+
+    <!-- 3. 動画紹介 -->
+    <div class="section" id="video-section">
+      <h2>紹介動画</h2>
+      <button id="playVideo" class="nav-button white-button">動画を再生</button>
+    </div>
+
+    <!-- 3. 概念草图与说明 -->
+    <div class="section gallery">
+      <h2>コンセプトスケッチと空間構成</h2>
+      <img src="DSC02053.webp" alt="スケッチとゾーニング" class="gallery-img" loading="lazy">
+    </div>
+
+    <!-- 4. 模型与空间照片 -->
+    <div class="section gallery">
+      <h2>模型写真と光の体験</h2>
+      <img src="DSC02605.webp" alt="模型と光の演出" class="gallery-img" loading="lazy">
+    </div>
+
+    <!-- 5. 平面・断面・立面图 -->
+    <div class="section gallery">
+      <h2>図面（平面・立面・断面）</h2>
+      <img src="DSC01457.webp" alt="図面詳細" class="gallery-img" loading="lazy">
+    </div>
+
+    <!-- 6. 使用ツール -->
+    <div class="section">
+      <h2>使用ツール</h2>
+      <ul class="tools-list">
+        <li>Vectorworks（建築設計図面）</li>
+        <li>Photoshop（建築写真の合成と色補正）</li>
+        <li>Illustrator（発表資料のレイアウト）</li>
+        <li>手描きスケッチ</li>
+      </ul>
+    </div>
+
+    <!-- 戻る -->
+    <nav class="back">
+      <a href="portfolio.html" class="nav-button">← 作品一覧に戻る</a>
+    </nav>
+
+    <!-- 版权 -->
+    <footer>
+      © テイテンメイ 2025
+    </footer>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="拡大画像">
+  </div>
+
+  <!-- Video Lightbox -->
+  <div class="video-lightbox" id="videoLightbox">
+    <video controls preload="none">
+      <source id="videoSource" src="" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- JS -->
+  <script src="js/hub_detail.js" defer></script>
+</body>
+</html>
