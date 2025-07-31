@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (videoBtn && videoLightbox && videoSource && videoElement) {
     videoBtn.addEventListener("click", () => {
-      videoSource.src = "videos:hub_of_senses.mp4"; // 确保文件路径正确
+      // 设定影片来源，确保指向正确的文件路径
+      videoSource.src = "videoshub_of_senses.mp4";
       videoLightbox.classList.add("active");
       videoElement.load();
       videoElement.play();
