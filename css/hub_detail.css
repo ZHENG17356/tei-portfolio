@@ -123,3 +123,30 @@ footer {
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(255,255,255,0.15);
 }
+.under-construction {
+  position: relative;
+  opacity: 0.15;
+  pointer-events: none;
+  user-select: none;
+}
+
+.under-construction::before {
+  content: "⚠️ このセクションは現在制作中です";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(147, 147, 147, 0.85);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  text-align: center;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
