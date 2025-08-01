@@ -1,46 +1,55 @@
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
+  background-color: #111;
+  color: #eee;
   margin: 0;
-  padding: 0;
+  padding: 40px 20px;
   line-height: 1.8;
-  background: #000; /* 黑色背景 */
-  color: #f5f5f5;   /* 主体文字浅灰白 */
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 960px;
   margin: auto;
-  padding: 0 20px;
 }
 
 .section {
-  padding: 60px 10%;
-  margin: 0 auto;
-  max-width: 1100px;
+  margin-bottom: 3em;
 }
 
-h1, h2 {
+h1 {
+  font-size: 2.6em;
+  margin-bottom: 0.2em;
+  color: #fff;
+}
+
+h2 {
   text-align: center;
-  margin-bottom: 1em;
-  color: #ffffff;
+  margin-bottom: 0.6em;
+  color: #f0f0f0;
 }
 
 .subheading {
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.2em;
   color: #ccc;
-  margin-top: -10px;
-  margin-bottom: 40px;
+  margin-bottom: 2em;
 }
 
 .gallery-img {
-  max-width: 100%;
+  max-width: 720px;
+  width: 100%;
   height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
   display: block;
-  margin: 20px auto;
-  border-radius: 8px;
+  margin: 0 auto;
   box-shadow: 0 6px 18px rgba(255,255,255,0.1);
+}
+
+.gallery-img:hover {
+  transform: scale(1.02);
 }
 
 .caption, .img-caption {
@@ -65,6 +74,34 @@ h1, h2 {
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
 }
 
+/* === Lightbox === */
+.lightbox {
+  opacity: 0;
+  transition: opacity 0.35s;
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
+}
+
 /* === 返回按钮导航 === */
 nav.back {
   margin-top: 4em;
@@ -73,7 +110,7 @@ nav.back {
 
 footer {
   text-align: center;
-  margin: 80px 0 20px;
+  margin-top: 60px;
   font-size: 0.85rem;
   color: #777;
 }
