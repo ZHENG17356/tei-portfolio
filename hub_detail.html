@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>HUB of SENSES | テイテンメイ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link rel="stylesheet" href="css/hub_detail.css">
+<link rel="stylesheet" href="css/hub_detail.css">
+<link rel="stylesheet" href="css/animations.css">
+
 </head>
+
 
 <body>
   <div class="container">
@@ -19,11 +21,12 @@
 <!-- 1. 内嵌式動画（最简版） -->
 <div class="section" id="video-section">
   <h2>紹介動画</h2>
-  <video controls preload="none" class="embedded-video">
+  <video controls preload="none" playsinline class="embedded-video" poster="imageshub_poster.webp">
     <source src="videoshub_of_senses.mp4" type="video/mp4">
     お使いのブラウザは動画をサポートしていません。
   </video>
 </div>
+
 
 <!-- 2. 项目概念介绍 -->
 <div class="section">
@@ -72,5 +75,20 @@
 
   <!-- JS -->
   <script src="js/hub_detail.js" defer></script>
+
+<section class="section gallery">
+  <h2>照明設計｜Lighting Design</h2>
+  <p>
+    本計画では、時間帯・作業内容・空間特性に応じた照明設計を行い、<br>
+    心地よさと集中力の両立、さらには心理的な安心感の演出を図りました。<br>
+    例えば、朝は6500Kの白色光で集中を促進し、夕方は2700Kの暖色光でリラックスを演出するなど、<br>
+    「光の移ろい」による空間演出を積極的に取り入れています。
+  </p>
+  <div class="image-grid">
+    <img src="images/lighting_design.webp" alt="Lighting Design Overview">
+    <p class="img-caption">▲ 一日の時間帯に応じて色温度と照度を調整し、働く人の集中とリラックスをサポートする照明計画</p>
+  </div>
+</section>
+
 </body>
 </html>
