@@ -19,6 +19,8 @@
       margin: 0 auto;
     }
 
+.works-grid { display: grid; gap: 2rem; }
+
     a.card {
       display: block;
       background: #1b1b1b;

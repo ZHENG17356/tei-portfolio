@@ -4,87 +4,100 @@
   <meta charset="UTF-8">
   <title>HUB of SENSES | テイテンメイ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="css/hub_detail.css">
-  <link rel="stylesheet" href="css/animations.css">
-
 </head>
-
-
 <body>
-  <div class="container">
-   <!-- 标题与副标题 -->
-<h1>HUB of SENSES</h1>
-<div class="subheading">音・香り・光を使って感覚をつなぐ交流拠点</div>
+<section id="hub-of-senses" class="project project--hub" aria-labelledby="hub-title">
+  <header class="project__header">
+    <h1 id="hub-title">HUB of SENSES</h1>
+    <p class="subtitle">五感で“仕事モード”へ切り替えるオフィス</p>
+    <p class="subtitle-en">Designing an office where lighting and scent guide emotion and focus</p>
+  </header>
 
-<!-- 1. 内嵌式動画（最简版） -->
-<div class="section" id="video-section">
-  <h2>紹介動画</h2>
-  <video controls preload="none" playsinline class="embedded-video" poster="imageshub_poster.webp">
-    <source src="videoshub_of_senses.mp4" type="video/mp4">
-    お使いのブラウザは動画をサポートしていません。
-  </video>
-</div>
+  <!-- 3行要约 -->
+  <section class="project__summary" aria-labelledby="hub-summary">
+    <h2 id="hub-summary" class="visually-hidden">Summary</h2>
+    <ul class="taglines">
+      <li><strong>課題｜Challenge：</strong>入室直後に集中できない。雑談と個人作業が混在し、光環境が曖昧。</li>
+      <li><strong>着眼｜Approach：</strong>色温・輝度対比・香りで“切り替え”をデザイン。導線と視線の設計を統合。</li>
+      <li><strong>成果｜Outcome：</strong>受付→集中席までの導線短縮、局所グレアを抑制し視覚疲労を低減。</li>
+    </ul>
+  </section>
 
+  <!-- 首屏媒体：封面图 + 点击播放视频 -->
+  <figure class="hero" aria-label="Project hero media">
+    <img
+      src="imageshub_poster.webp"
+      alt="HUB of SENSES poster"
+      width="1600" height="900"
+      fetchpriority="high">
+    <button class="btn btn--primary hero__play" id="hub-play" aria-controls="hub-video" aria-label="Play project video">
+      ▶︎ Play
+    </button>
+    <video
+      id="hub-video"
+      class="hero__video"
+      src="videoshub_of_senses.mp4"
+      preload="metadata"
+      playsinline
+      muted
+      controls
+      hidden
+      poster="imageshub_poster.webp">
+      Sorry, your browser doesn't support embedded videos.
+    </video>
+    <figcaption class="hero__caption">Click to watch: zoning, lighting CCT shifts, and user flow.</figcaption>
+  </figure>
 
-<!-- 2. 项目概念介绍 -->
-<div class="section">
-  <h3>プロジェクトの背景</h3>
-<p>
-本計画は、デザイン会社「Studio ORINOTE」の本社移転に伴う、150坪の新オフィス設計プロジェクトである。<br>
-社員が“ここで働き続けたい”“また戻ってきたい”と感じられる、感性と創造力を育む空間の提案が求められた。<br>
-働き方やチーム構成の変化に柔軟に対応しながら、印象に残る体験型オフィスを構想した。
-</p>
+  <!-- Facts -->
+  <section class="facts" aria-labelledby="hub-facts">
+    <h2 id="hub-facts">Facts</h2>
+    <dl class="facts-grid">
+      <div><dt>期間｜Duration</dt><dd>2025.04–06</dd></div>
+      <div><dt>規模｜Scale</dt><dd>約150㎡（新宿・最上階想定）</dd></div>
+      <div><dt>役割｜Role</dt><dd>Lead（企画 / ゾーニング / 照明計画 / レンダリング）</dd></div>
+      <div><dt>ツール｜Tools</dt><dd>Vectorworks / Twinmotion / Photoshop / AI</dd></div>
+      <div><dt>狙い｜Focus</dt><dd>色温・輝度対比・香りによる“切り替え”</dd></div>
+      <div><dt>成果｜Result</dt><dd>導線短縮、グレア抑制（スタジオ講評）</dd></div>
+      <div><dt>提出形態｜Deliverables</dt><dd>3Dレイアウト / 渲染図 / 動画 1:40</dd></div>
+      <div><dt>学び｜Learning</dt><dd>開放感と集中を両立する輝度差設計</dd></div>
+    </dl>
+  </section>
 
-</div>
+  <!-- Story -->
+  <section class="story" aria-labelledby="hub-story">
+    <h2 id="hub-story">Story</h2>
 
-<!-- 3. コンセプト写真紹介 -->
-<div class="section gallery">
-  <h2>空間のイメージ</h2>
-  <img src="DSC02056.webp" alt="照明デザイン" class="gallery-img" loading="lazy">
-  <p class="caption">照明デザインによる柔らかな空間演出</p>
-<section class="section gallery">
-  <h2>照明設計｜Lighting Design</h2>
-  <p>
-    本計画では、時間帯・作業内容・空間特性に応じた照明設計を行い、<br>
-    心地よさと集中力の両立、さらには心理的な安心感の演出を図りました。<br>
-    例えば、朝は6500Kの白色光で集中を促進し、夕方は2700Kの暖色光でリラックスを演出するなど、<br>
-    「光の移ろい」による空間演出を積極的に取り入れています。
-  </p>
-  <div class="image-grid">
-    <img src="images_lighting_design.webp" alt="Lighting Design Overview">
-    <p class="img-caption">▲ 一日の時間帯に応じて色温度と照度を調整し、働く人の集中とリラックスをサポートする照明計画</p>
-  </div>
+    <article class="story__block">
+      <h3>1) Insight｜観察と気づき</h3>
+      <p>来訪〜着席の1分間に、視線ノイズと会話の混在で集中へ移行できない。受付周辺の高輝度点が分散し、視線が彷徨うことを確認。</p>
+      <figure class="img-16x9">
+        <img src="images_lighting_design.webp" alt="Observation map: glare points and noise nodes" loading="lazy" decoding="async" width="1400" height="788">
+        <figcaption>Glare points / noise nodes around the entry reduce the clarity of the focus path.</figcaption>
+      </figure>
+    </article>
+
+    <article class="story__block">
+      <h3>2) Concept → Layout → Lighting Strategy</h3>
+      <p>エントランスは高輝度点を“線”でつなぎ視線誘導、集中席はタスクライト＋壁面の穏やかな輝度でコントラストを調整。時間帯に応じて 6500K→4000K→2700K。</p>
+      <figure class="img-16x9">
+        <img src="imageshub_poster.webp" alt="Matrix of Time × CCT × Illuminance × Area with path overlay" loading="lazy" decoding="async" width="1400" height="788">
+        <figcaption>Time × CCT × Illuminance × Area matrix with a 1-minute path-to-focus overlay.</figcaption>
+      </figure>
+    </article>
+
+    <article class="story__block">
+      <h3>3) Validation｜検証と反省</h3>
+      <p>集中席の面照度を上げすぎると周辺との輝度差で疲労 → 棚照明で壁面輝度を底上げし改善。受付〜集中までの動線をシンプル化し、迷いを削減。</p>
+      <figure class="img-16x9">
+        <img src="imageshub_poster.webp" alt="Before/after comparatives: glare reduction and clearer path" loading="lazy" decoding="async" width="1400" height="788">
+        <figcaption>Before / After: reduced glare and clearer path-to-focus.</figcaption>
+      </figure>
+    </article>
+  </section>
 </section>
-  <img src="DSC02607.webp" alt="詳細" class="gallery-img" loading="lazy">
-  <p class="caption">音と香りの融合による集中空間</p>
-
-  <img src="DSC01459.webp" alt="詳細" class="gallery-img" loading="lazy">
-  <p class="caption">優しい光による感覚のつながり</p>
-</div>
-
-    <!-- 戻る -->
-    <nav class="back">
-      <a href="portfolio.html" class="nav-button">← 作品一覧に戻る</a>
-    </nav>
-
-    <!-- 版权 -->
-    <footer>
-      © テイテンメイ 2025
-    </footer>
-  </div>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <img src="" alt="拡大画像">
-  </div>
-
-  <!-- JS -->
-  <script src="js/hub_detail.js" defer></script>
-
-
-
+<script src="js/hub.js" defer></script>
 </body>
 </html>
