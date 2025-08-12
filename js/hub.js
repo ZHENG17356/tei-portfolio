@@ -1,17 +1,13 @@
 // js/hub.js
-(function () {
-  const playBtn = document.getElementById('hub-play');
-  const video = document.getElementById('hub-video');
-  if (playBtn && video) {
-    playBtn.addEventListener('click', () => {
-      playBtn.style.display = 'none';
-      video.hidden = false;
-      const p = video.play();
-      if (p && typeof p.catch === 'function') {
-        p.catch(() => {/* ignore policy blocks */});
-      }
+(function(){
+  const btn = document.getElementById('hub-play');
+  const vid = document.getElementById('hub-video');
+  if (btn && vid) {
+    btn.addEventListener('click', () => {
+      btn.style.display = 'none';
+      vid.hidden = false;
+      const p = vid.play();
+      if (p && typeof p.catch === 'function') { p.catch(()=>{}); }
     });
   }
-
-  // 可选：原生 lazy 已开启；如需更激进的懒加载，可在此扩展
 })();

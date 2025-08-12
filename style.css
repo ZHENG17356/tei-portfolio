@@ -83,3 +83,78 @@
   border-radius: 12px;
 }
 
+/* === WORKS 卡片视觉优化（圆角/阴影/悬浮） === */
+.work-card {
+  display: block;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;                  /* 让图片沿用圆角 */
+  backdrop-filter: blur(2px);        /* 微弱玻璃感，可保留/删除 */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s;
+}
+.work-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  border-color: rgba(255,255,255,0.16);
+}
+
+/* 封面图：固定比例 + 上边圆角 */
+.work-card__media img {
+  width: 100%; height: auto; display: block;
+  aspect-ratio: 16/9; object-fit: cover;
+  border-radius: 16px 16px 0 0;
+}
+
+/* 标题与副标题 */
+.work-card__header { padding: .9rem .9rem 0; }
+.work-card__title { margin: .2rem 0 0; font-size: 1.1rem; }
+.work-card__subtitle { margin: .25rem 0 .5rem; opacity: .85; font-size: .95rem; }
+
+/* 3 行要约：紧凑，最多 1 行（防止卡片过高） */
+.work-card__summary {
+  list-style: none; padding: 0 .9rem; margin: 0;
+  display: grid; gap: .35rem;
+}
+.work-card__summary li {
+  line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+/* 信息标签（半透明深色 + 玻璃磨砂） */
+.work-card__facts {
+  padding: .6rem .9rem .9rem; margin: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .6rem .75rem;
+}
+.work-card__facts > div {
+  background: rgba(0, 0, 0, 0.35);      /* 半透明深色底 */
+  color: #f0f0f0;                        /* 浅色文字 */
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: .55rem .65rem;
+  backdrop-filter: blur(4px);            /* 玻璃磨砂 */
+}
+.work-card__facts dt { font-weight: 600; font-size: .9rem; margin: 0 0 .15rem; opacity: .9; }
+.work-card__facts dd { margin: 0; font-size: 1rem; }
+
+/* CTA */
+.work-card__cta { padding: .4rem .9rem .9rem; font-weight: 700; opacity: .8; }
+
+/* 小屏单列更易读 */
+@media (max-width: 480px) {
+  .work-card__facts { grid-template-columns: 1fr; }
+}
+
+/* HUB 专属（可选） */
+.work-card--hub .work-card__title { letter-spacing: .2px; }
+
+/* 作品网格列数（骨架） */
+.works-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+@media (min-width: 1024px) {
+  .works-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
