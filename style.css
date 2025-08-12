@@ -64,10 +64,10 @@
   display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .5rem .75rem;
 }
 .work-card__facts > div {
-  background: #fff; border-radius: 8px; padding: .5rem .6rem;
+  background: #fff; color: #111; border-radius: 8px; padding: .5rem .6rem;
 }
-.work-card__facts dt { font-weight: 700; font-size: .85rem; margin: 0 0 .15rem; }
-.work-card__facts dd { margin: 0; font-size: .95rem; }
+.work-card__facts dt { font-weight: 700; font-size: .9rem; margin: 0 0 .15rem; }
+.work-card__facts dd { margin: 0; font-size: 1rem; }
 
 .work-card__cta {
   padding: 0 .9rem .9rem;
