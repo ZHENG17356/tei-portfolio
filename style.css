@@ -76,3 +76,10 @@
 
 /* HUB 專屬微調 */
 .work-card--hub .work-card__title { letter-spacing: .2px; }
+
+.work-card__link:focus-visible {
+  outline: 2px solid rgba(255,255,255,.6);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
