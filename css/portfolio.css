@@ -64,3 +64,30 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   z-index: 10;
 }
+
+/* === Overrides for work cards on portfolio page === */
+/* Show full text for summary items (課題/着眼/成果) */
+.work-card__summary li {
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+  text-overflow: unset;
+  white-space: normal;
+}
+
+/* Wider info tags with multiline support */
+.work-card__facts {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Larger thumbnails with rounded corners */
+.work-card__media {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.work-card__media img {
+  aspect-ratio: 4/3;
+  border-radius: 0;
+}
